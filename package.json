@@ -10,9 +10,10 @@
   "main": "index.js",
   "scripts": {
     "webpack-dev-server": "webpack-dev-server",
+    "start": "node server.js",
     "dev": "webpack serve --mode=development",
-    "build": "NODE_ENV=production webpack --mode=production",
-    "serve": "npm run build && serve -s build"
+    "serve": "npm run build && serve -s build",
+    "build": "NODE_ENV=production webpack --mode=production"
   },
   "author": "Adarsh Mamgain",
   "license": "ISC",
@@ -21,6 +22,7 @@
     "@emotion/styled": "^11.6.0",
     "@mui/icons-material": "^5.1.1",
     "@mui/material": "^5.1.1",
+    "express": "^4.17.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
@@ -29,6 +31,7 @@
     "@babel/preset-env": "^7.16.4",
     "@babel/preset-react": "^7.16.0",
     "babel-loader": "^8.2.3",
+    "html-loader": "^3.0.1",
     "html-webpack-plugin": "^5.5.0",
     "serve": "^13.0.2",
     "webpack": "^5.64.2",
