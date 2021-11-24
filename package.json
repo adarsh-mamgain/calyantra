@@ -1,7 +1,12 @@
 {
   "name": "tool-frontend",
   "version": "1.0.0",
-  "description": "",
+  "description": "My tools website",
+  "engines": {
+    "node": "14.18.1",
+    "npm": "6.14.15"
+  },
+  "private": true,
   "main": "index.js",
   "scripts": {
     "webpack-dev-server": "webpack-dev-server",
