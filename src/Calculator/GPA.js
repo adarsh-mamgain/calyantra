@@ -46,29 +46,12 @@ const gradesList = [
     value: 0,
     label: "F",
   },
-  // {
-  //   value: 0,
-  //   label: "AB",
-  // },
-  // {
-  //   value: 0,
-  //   label: "I",
-  // },
-  // {
-  //   value: 0,
-  //   label: "W",
-  // },
-  // {
-  //   value: 0,
-  //   label: "*",
-  // },
 ];
 
 export default function GPA() {
   const n = 5, m = 3;
   var count = 0;
   var [result, setResult] = React.useState(["Result"]);
-  // var [grades, setGrade] = React.useState([m]);
   var [matrix, setMatrix] = React.useState(
     Array.from({ length: n }, () => Array.from({ length: m }, () => null))
   );
@@ -76,8 +59,6 @@ export default function GPA() {
     let copy = [...matrix];
     copy[row][column] = event.target.value;
     setMatrix(copy);
-    console.log(grades);
-    // setGrade(event.target.value);
   };
 
   const gpaCalculate = () => {
@@ -161,7 +142,6 @@ export default function GPA() {
                         size="small"
                         variant="filled"
                         // key={3}
-                        value={grades}
                         // ! here change the grades for particular key
                         onChange={(e) => handleChange(rowIndex, 2, e)}
                         id="filled-select-grade"
