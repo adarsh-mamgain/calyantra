@@ -12,6 +12,8 @@ import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import Feedback from "../Email/Feedback";
+import Crumbs from "../Crumbs";
 
 const gradesList = [
   {
@@ -83,8 +85,9 @@ export default function GPA() {
 
   return (
     <Box sx={{ px: 20, m: 3 }}>
-      <Grid container justifyContent="center" alignItems="center">
-        <Grid item xs={12} sm={10}>
+      <Crumbs />
+      <Grid container justifyContent="center" spacing={ 1 }>
+        <Grid item xs={12} sm={9}>
           <Typography variant="h1">GPA Calculator</Typography>
           <TableContainer
             component={Paper}
@@ -118,7 +121,7 @@ export default function GPA() {
                         variant="filled"
                         // key={1}
                         onChange={(e) => handleChange(rowIndex, 0, e)}
-                        id="filled-credit"
+                        id="filled-course-name"
                       />
                     </TableCell>
                     <TableCell>
@@ -145,6 +148,7 @@ export default function GPA() {
                         // ! here change the grades for particular key
                         onChange={(e) => handleChange(rowIndex, 2, e)}
                         id="filled-select-grade"
+                        defaultValue={"null"}
                         select
                       >
                         {gradesList.map((option) => (
@@ -184,7 +188,8 @@ export default function GPA() {
             </Table>
           </TableContainer>
         </Grid>
-        <Grid item xs={0} sm={2} bgcolor="grey">
+        <Grid item xs={0} sm={3} bgcolor="grey">
+          <Feedback />
           <Typography variant="h1">ADS</Typography>
         </Grid>
       </Grid>
