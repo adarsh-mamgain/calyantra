@@ -2,9 +2,6 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-// Required for babel-preset-react-app
-process.env.NODE_ENV = 'development';
-
 module.exports = {
   entry: "./src/index.js",
   mode: "development",
@@ -23,7 +20,12 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
-          options: { presets: ['@babel/env','@babel/preset-react'] },
+        }
+      },
+      {
+        test: /\.html$/,
+        use: {
+          loader: "html-loader",
         }
       }
     ], 
@@ -34,5 +36,4 @@ module.exports = {
       filename: 'index.html',
     })
   ],
-  devtool: "inline-source-map",
 }
