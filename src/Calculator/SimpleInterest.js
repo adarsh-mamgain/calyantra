@@ -1,59 +1,6 @@
 import React from "react";
-import {
-  Box,
-  Button,
-  Typography,
-  TextField,
-  MenuItem,
-  Grid,
-  Paper,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Table,
-  TableBody,
-  TableCell,
-} from "@mui/material";
-import Feedback from "../Sidebar/Feedback";
-import Donate from "../Sidebar/Donate";
-import Crumbs from "../Crumbs";
 
-const gradesList = [
-  {
-    value: "null",
-    label: "None",
-  },
-  {
-    value: 10,
-    label: "O",
-  },
-  {
-    value: 9,
-    label: "A+",
-  },
-  {
-    value: 8,
-    label: "A",
-  },
-  {
-    value: 7,
-    label: "B+",
-  },
-  {
-    value: 6,
-    label: "B",
-  },
-  {
-    value: 5,
-    label: "C",
-  },
-  {
-    value: 0,
-    label: "F",
-  },
-];
-
-export default function GPA() {
+export default function SimpleInterest() {
   const n = 5,
     m = 3;
   var count = 0;
@@ -90,7 +37,7 @@ export default function GPA() {
   return (
     <Box sx={{ px: 20, m: 3 }}>
       <Crumbs />
-      <Typography variant="h2">GPA Calculator</Typography>
+      <Typography variant="h2">Simple Interest Calculator</Typography>
       <Grid container justifyContent="center" spacing={1}>
         <Grid item xs={12} sm={9}>
           <TableContainer
@@ -194,7 +141,6 @@ export default function GPA() {
         </Grid>
         <Grid item xs={0} sm={3} bgcolor="grey">
           <Feedback />
-          <Donate />
           <Typography variant="h1">ADS</Typography>
         </Grid>
       </Grid>

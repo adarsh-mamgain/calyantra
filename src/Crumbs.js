@@ -5,19 +5,10 @@ import CalculateIcon from "@mui/icons-material/Calculate";
 import GrainIcon from "@mui/icons-material/Grain";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 
-function handleClick(event) {
-  event.preventDefault();
-  alert("You clicked a breadcrumb.");
-}
-
 export default function Crumbs() {
   return (
     <Box>
-      <Breadcrumbs
-        sx={{ py: 1, my: 3 }}
-        aria-label="breadcrumb"
-        onClick={handleClick}
-      >
+      <Breadcrumbs sx={{ py: 1, my: 3 }} aria-label="breadcrumb">
         <Link
           underline="hover"
           sx={{ display: "flex", alignItems: "center" }}
@@ -45,5 +36,5 @@ export default function Crumbs() {
         </Typography>
       </Breadcrumbs>
     </Box>
-  )
+  );
 }

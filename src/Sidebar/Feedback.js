@@ -1,6 +1,15 @@
 import React from "react";
-import axios from "axios";2
-import { Box, TextField, Typography, Collapse, Alert, IconButton, MenuItem, Button } from "@mui/material";
+import axios from "axios";
+import {
+  Box,
+  TextField,
+  Typography,
+  Collapse,
+  Alert,
+  IconButton,
+  MenuItem,
+  Button,
+} from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import CloseIcon from "@mui/icons-material/Close";
 import { useLocation } from "react-router";
@@ -18,7 +27,7 @@ const subjectList = [
     value: "complaint",
     label: "Complaint",
   },
-]
+];
 
 export default function Feedback() {
   const [open, setOpen] = React.useState(false);
@@ -28,35 +37,41 @@ export default function Feedback() {
 
   const changeType = (event) => {
     setType(event.target.value);
-  }
+  };
   const changeMessage = (event) => {
     setMessage(event.target.value);
-  }
+  };
   const location = useLocation();
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     let formdata = new FormData();
     formdata.append("type", type);
     formdata.append("message", message);
-    formdata.append("url", `https://onlinetool.herokuapp.com${location.pathname}`)
-    formdata.append("date", new Date().toLocaleString() + '')
+    formdata.append(
+      "url",
+      `https://onlinetool.herokuapp.com${location.pathname}`
+    );
+    formdata.append("date", new Date().toLocaleString() + "");
     let reqOptions = {
       url: `https://api.adarshmamgain.repl.co/updateform/${type}`,
       method: "POST",
-      data: formdata, 
-    }
-    
-    axios.request(reqOptions)
-    .then(function (response) {
-      setSubmitMsg(response.data);
-      setOpen(true);
-    })
-    .catch(error => {
-      alert("Uh Oh! Couldn't submit your response :(\nWe are having problems ;(");
-    });
+      data: formdata,
+    };
+
+    axios
+      .request(reqOptions)
+      .then(function (response) {
+        setSubmitMsg(response.data);
+        setOpen(true);
+      })
+      .catch((error) => {
+        alert(
+          "Uh Oh! Couldn't submit your response :(\nWe are having problems ;("
+        );
+      });
   };
-  
+
   return (
     <Box>
       <Typography variant="h5">Write to us 😊</Typography>
@@ -65,7 +80,7 @@ export default function Feedback() {
           hiddenLabel
           required
           size="small"
-          sx={{ width: '100%' }}
+          sx={{ width: "100%" }}
           variant="filled"
           id="filled-select-grade"
           value={type}
@@ -82,20 +97,20 @@ export default function Feedback() {
           hiddenLabel
           required
           multiline
-          rows={ 4 }
+          rows={4}
           size="small"
-          sx={{ width: '100%' }}
+          sx={{ width: "100%" }}
           variant="filled"
           id="filled-message"
           value={message}
           onChange={(e) => changeMessage(e)}
         />
-        <Button 
+        <Button
           color="secondary"
           endIcon={<SendIcon />}
           variant="contained"
           type="submit"
-          sx={{ width: '100%' }}
+          sx={{ width: "100%" }}
         >
           Submit
         </Button>
@@ -120,5 +135,5 @@ export default function Feedback() {
         </Collapse>
       </form>
     </Box>
-  )
+  );
 }
