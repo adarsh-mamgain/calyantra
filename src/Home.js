@@ -7,6 +7,7 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
+import { Helmet } from "react-helmet";
 import EnhancedEncryptionIcon from "@mui/icons-material/EnhancedEncryption";
 import CalculateIcon from "@mui/icons-material/Calculate";
 import CodeIcon from "@mui/icons-material/Code";
@@ -18,6 +19,26 @@ import LoopIcon from "@mui/icons-material/Loop";
 export default function Home() {
   return (
     <Box sx={{ px: 20, m: 3 }}>
+      <Helmet>
+        {/* Primary Meta Tags */}
+        <title>Online calculators, convertors, editors | Mangya.tech</title>
+        <meta name="title" content="Online calculators, convertors, editors | Mangya.tech" />
+        <meta name="description" content="Calculate your GPAs, Interest, BMI. Convert length, heat, liquids. Edit your PDF files, hash them, encrypt." />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://mangya.tech" />
+        <meta property="og:title" content="Online calculators, convertors, editors | Mangya.tech" />
+        <meta property="og:description" content="Calculate your GPAs, Interest, BMI. Convert length, heat, liquids. Edit your PDF files, hash them, encrypt." />
+        <meta property="og:image" content="https://mangya.tech/illustration.svg" />
+
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://mangya.tech" />
+        <meta property="twitter:title" content="Online calculators, convertors, editors | Mangya.tech" />
+        <meta property="twitter:description" content="Calculate your GPAs, Interest, BMI. Convert length, heat, liquids. Edit your PDF files, hash them, encrypt." />
+        <meta property="twitter:image" content="https://mangya.tech/illustration.svg" />
+      </Helmet>
       <List
         sx={{
           width: "90%",
