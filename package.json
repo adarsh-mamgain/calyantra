@@ -13,7 +13,7 @@
     "start": "node server.js",
     "dev": "webpack serve --mode=development",
     "serve": "npm run build && serve -s build",
-    "build": "NODE_ENV=production webpack --mode=production"
+    "build": "npm i && NODE_ENV=production webpack --mode=production"
   },
   "author": "Adarsh Mamgain",
   "license": "ISC",
