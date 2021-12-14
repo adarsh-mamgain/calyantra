@@ -8,11 +8,11 @@
     ],
     "rewrites": [
       {
-        "source": "/robots.txt",
+        "source": "**",
         "destination": "/robots.txt"
       },
       {
-        "source": "/sitemap.xml",
+        "source": "**",
         "destination": "/sitemap.xml"
       },
       {
