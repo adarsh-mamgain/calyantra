@@ -1,5 +1,7 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow: /administrator
+Disallow: /privacy-policy
+Disallow: /terms-and-conditions
 
 Sitemap: https://mangya.tech/sitemap.xml

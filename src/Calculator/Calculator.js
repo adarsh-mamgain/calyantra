@@ -1,6 +1,7 @@
 import React from "react";
 import GPA from "./GPA";
 import SimpleInterest from "./SimpleInterest";
+import PageNotFound from "../Components/Static/404"
 import { Routes, Route } from "react-router";
 import { Link } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
@@ -44,6 +45,7 @@ export default function Calculator() {
       <Route path="" element={<CalculatorHome />} />
       <Route path="/gpa" element={<GPA />} />
       <Route path="/simple-interest" element={<SimpleInterest />} />
+      <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
 }

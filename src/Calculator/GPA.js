@@ -14,9 +14,9 @@ import {
   TableBody,
   TableCell,
 } from "@mui/material";
-import Feedback from "../Sidebar/Feedback";
-import Donate from "../Sidebar/Donate";
-import Crumbs from "../Crumbs";
+import Feedback from "../Components/Feedback";
+import Donate from "../Components/Donate";
+import Crumbs from "../Components/Crumbs";
 
 const gradesList = [
   {
@@ -109,10 +109,7 @@ export default function GPA() {
               </TableHead>
               <TableBody>
                 {matrix.map((rows, rowIndex) => (
-                  <TableRow
-                    key={rowIndex}
-                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                  >
+                  <TableRow key={rowIndex}>
                     <TableCell key={0} component="th" scope="row" align="right">
                       {(count += 1)}
                     </TableCell>

@@ -1,5 +1,6 @@
 import React from "react";
 import SHA from "./SHA";
+import PageNotFound from "../Components/Static/404";
 import { Routes, Route } from "react-router";
 import { Link } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
@@ -53,7 +54,13 @@ export default function Calculator() {
   return (
     <Routes>
       <Route path="" element={<HashHome />} />
-      <Route path="/:type" element={<SHA />} />
+      <Route path="/md5" element={<SHA />} />
+      <Route path="/sha1" element={<SHA />} />
+      <Route path="/sha224" element={<SHA />} />
+      <Route path="/sha256" element={<SHA />} />
+      <Route path="/sha384" element={<SHA />} />
+      <Route path="/sha512" element={<SHA />} />
+      <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
 }

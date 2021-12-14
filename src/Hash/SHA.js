@@ -1,7 +1,7 @@
 import React from "react";
-import Crumbs from "../Crumbs";
-import Feedback from "../Sidebar/Feedback";
-import Donate from "../Sidebar/Donate";
+import Crumbs from "../Components/Crumbs";
+import Feedback from "../Components/Feedback";
+import Donate from "../Components/Donate";
 import { Grid, Box, TextField, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { MD5, SHA1, SHA224, SHA256, SHA384, SHA512 } from "crypto-js";

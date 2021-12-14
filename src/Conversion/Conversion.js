@@ -1,6 +1,7 @@
 import React from "react";
 import Length from "./Length";
-import Litre from "./Litre.js";
+import Litre from "./Litre";
+import PageNotFound from "../Components/Static/404";
 import { Routes, Route } from "react-router";
 import { Link } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
@@ -44,6 +45,7 @@ export default function Conversion() {
       <Route path="" element={<ConversionHome />} />
       <Route path="/length" element={<Length />} />
       <Route path="/litre" element={<Litre />} />
+      <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
 }
