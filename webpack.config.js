@@ -7,7 +7,7 @@ module.exports = {
   output: {
     filename: "main.js",
     path: path.resolve(__dirname, "build"),
-    assetModuleFilename: 'static/[name][ext]',
+    assetModuleFilename: "static/[name][ext]",
     publicPath: "/",
   },
   devServer: {
@@ -17,8 +17,10 @@ module.exports = {
     rules: [
       {
         test: /\.(png|jpe?g|svg|gif)$/,
-        type: 'asset',
-        use: ["file-loader"]
+        type: "asset/resource",
+        generator: {
+          filename: "./static/[name][ext]",
+        },
       },
       {
         test: /\.(js|jsx)$/,
@@ -35,9 +37,6 @@ module.exports = {
         },
       },
     ],
-  },
-  experiments: {
-    asset: true
   },
   plugins: [
     new HtmlWebpackPlugin({

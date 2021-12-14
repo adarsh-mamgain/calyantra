@@ -11,9 +11,9 @@ import {
   TableBody,
   TableCell,
 } from "@mui/material";
-import Feedback from "../Sidebar/Feedback";
-import Donate from "../Sidebar/Donate";
-import Crumbs from "../Crumbs";
+import Feedback from "../Components/Feedback";
+import Donate from "../Components/Donate";
+import Crumbs from "../Components/Crumbs";
 
 export default function Litre() {
   const [result, setResult] = React.useState(0);
