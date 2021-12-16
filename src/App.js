@@ -8,6 +8,7 @@ import Hash from "./Hash/Hash";
 import Conversion from "./Conversion/Conversion";
 import PageNotFound from "./Components/Static/404";
 import { Privacy, Terms } from "./Components/Static/Legal";
+import Footer from "./Components/Footer";
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
+      <Footer />
     </Box>
   );
 }

@@ -15,7 +15,7 @@ import {
   TableCell,
 } from "@mui/material";
 import Feedback from "../Components/Feedback";
-import Donate from "../Components/Donate";
+// import Donate from "../Components/Donate";
 import Crumbs from "../Components/Crumbs";
 
 const gradesList = [
@@ -92,7 +92,7 @@ export default function GPA() {
       <Crumbs />
       <Typography variant="h2">GPA Calculator</Typography>
       <Grid container justifyContent="center" spacing={1}>
-        <Grid item xs={12} sm={9}>
+        <Grid item xs={12} lg={9}>
           <TableContainer
             component={Paper}
             elevation={3}
@@ -189,9 +189,9 @@ export default function GPA() {
             </Table>
           </TableContainer>
         </Grid>
-        <Grid item xs={0} sm={3} bgcolor="grey">
+        <Grid item xs={12} lg={3}>
           <Feedback />
-          <Donate />
+          {/* <Donate /> */}
           <Typography variant="h1">ADS</Typography>
         </Grid>
       </Grid>

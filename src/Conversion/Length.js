@@ -12,7 +12,7 @@ import {
   TableCell,
 } from "@mui/material";
 import Feedback from "../Components/Feedback";
-import Donate from "../Components/Donate";
+// import Donate from "../Components/Donate";
 import Crumbs from "../Components/Crumbs";
 
 export default function Length() {
@@ -71,9 +71,9 @@ export default function Length() {
             </Table>
           </TableContainer>
         </Grid>
-        <Grid item xs={0} sm={3} bgcolor="grey">
+        <Grid item xs={0} sm={3}>
           <Feedback />
-          <Donate />
+          {/* <Donate /> */}
           <Typography variant="h1">ADS</Typography>
         </Grid>
       </Grid>

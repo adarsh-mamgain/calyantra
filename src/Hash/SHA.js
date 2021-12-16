@@ -1,7 +1,7 @@
 import React from "react";
 import Crumbs from "../Components/Crumbs";
 import Feedback from "../Components/Feedback";
-import Donate from "../Components/Donate";
+// import Donate from "../Components/Donate";
 import { Grid, Box, TextField, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { MD5, SHA1, SHA224, SHA256, SHA384, SHA512 } from "crypto-js";
@@ -62,9 +62,9 @@ export default function SHA() {
             />
           </Box>
         </Grid>
-        <Grid item xs={0} sm={3} bgcolor="grey">
+        <Grid item xs={0} sm={3}>
           <Feedback />
-          <Donate />
+          {/* <Donate /> */}
           <Typography variant="h1">ADS</Typography>
         </Grid>
       </Grid>
