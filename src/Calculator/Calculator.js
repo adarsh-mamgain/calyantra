@@ -1,6 +1,7 @@
 import React from "react";
 import GPA from "./GPA";
 import SimpleInterest from "./SimpleInterest";
+import SimpleCalculator from "./SimpleCalculator";
 import PageNotFound from "../Components/Static/404"
 import { Routes, Route } from "react-router";
 import { Link } from "react-router-dom";
@@ -35,6 +36,9 @@ export function CalculatorHome() {
       <Link underline="none" to="simple-interest">
         <Typography variant="h2">Simple Interest</Typography>
       </Link>
+      <Link underline="none" to="simple-calculator">
+        <Typography variant="h2">Simple Calculator</Typography>
+      </Link>
     </Box>
   );
 }
@@ -45,6 +49,7 @@ export default function Calculator() {
       <Route path="" element={<CalculatorHome />} />
       <Route path="/gpa" element={<GPA />} />
       <Route path="/simple-interest" element={<SimpleInterest />} />
+      <Route path="/simple-calculator" element={<SimpleCalculator />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

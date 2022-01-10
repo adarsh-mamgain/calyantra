@@ -9,6 +9,7 @@ import Conversion from "./Conversion/Conversion";
 import PageNotFound from "./Components/Static/404";
 import { Privacy, Terms } from "./Components/Static/Legal";
 import Footer from "./Components/Footer";
+import Emoji from "./Emoji/Emoji";
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
           <Route path="/calculator/*" element={<Calculator />} />
           <Route path="/hash/*" element={<Hash />} />
           <Route path="/convert/*" element={<Conversion />} />
+          <Route path="/emoji/*" element={<Emoji />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms-and-conditions" element={<Terms />} />
           <Route path="*" element={<PageNotFound />} />
