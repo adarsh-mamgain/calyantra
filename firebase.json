@@ -9,14 +9,6 @@
     "rewrites": [
       {
         "source": "**",
-        "destination": "/robots.txt"
-      },
-      {
-        "source": "**",
-        "destination": "/sitemap.xml"
-      },
-      {
-        "source": "**",
         "destination": "/index.html"
       }
     ]
