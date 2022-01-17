@@ -8,22 +8,22 @@ export function Terms() {
         <Grid item xs={12} sm={12}>
           <h1>Terms and Conditions</h1>
           <p>Last updated: December 12, 2021</p>
-          <p>Welcome to Mangya!</p>
+          <p>Welcome to Calyantra!</p>
           <p>
             These terms and conditions outline the rules and regulations for the
-            use of Mangya's Website, located at{" "}
+            use of Calyantra's Website, located at{" "}
             <a
-              href="https://mangya.tech"
+              href="https://calyantra.com"
               rel="external nofollow noopener"
               target="_blank"
             >
-              https://mangya.tech
+              https://calyantra.com
             </a>
             .
           </p>
           <p>
             By accessing this website we assume you accept these terms and
-            conditions. Do not continue to use Mangya if you do not agree to
+            conditions. Do not continue to use Calyantra if you do not agree to
             take all of the terms and conditions stated on this page.
           </p>
           <p>
@@ -48,8 +48,8 @@ export function Terms() {
 
           <h2>Cookies</h2>
           <p>
-            We employ the use of cookies. By accessing Mangya, you agreed to use
-            cookies in agreement with the Mangya's Privacy Policy.
+            We employ the use of cookies. By accessing Calyantra, you agreed to
+            use cookies in agreement with the Calyantra's Privacy Policy.
           </p>
           <p>
             Most interactive websites use cookies to let us retrieve the user's
@@ -61,35 +61,35 @@ export function Terms() {
 
           <h2>License</h2>
           <p>
-            Unless otherwise stated, Mangya and/or its licensors own the
-            intellectual property rights for all material on Mangya. All
+            Unless otherwise stated, Calyantra and/or its licensors own the
+            intellectual property rights for all material on Calyantra. All
             intellectual property rights are reserved. You may access this from
-            Mangya for your own personal use subjected to restrictions set in
+            Calyantra for your own personal use subjected to restrictions set in
             these terms and conditions.
           </p>
           <p>You must not:</p>
           <ul>
-            <li>Republish material from Mangya</li>
-            <li>Sell, rent or sub-license material from Mangya</li>
-            <li>Reproduce, duplicate or copy material from Mangya</li>
-            <li>Redistribute content from Mangya</li>
+            <li>Republish material from Calyantra</li>
+            <li>Sell, rent or sub-license material from Calyantra</li>
+            <li>Reproduce, duplicate or copy material from Calyantra</li>
+            <li>Redistribute content from Calyantra</li>
           </ul>
           <p>
             Parts of this website offer an opportunity for users to post and
             exchange opinions and information in certain areas of the website.
-            Mangya does not filter, edit, publish or review Comments prior to
+            Calyantra does not filter, edit, publish or review Comments prior to
             their presence on the website. Comments do not reflect the views and
-            opinions of Mangya,its agents and/or affiliates. Comments reflect
+            opinions of Calyantra,its agents and/or affiliates. Comments reflect
             the views and opinions of the person who post their views and
-            opinions. To the extent permitted by applicable laws, Mangya shall
-            not be liable for the Comments or for any liability, damages or
-            expenses caused and/or suffered as a result of any use of and/or
+            opinions. To the extent permitted by applicable laws, Calyantra
+            shall not be liable for the Comments or for any liability, damages
+            or expenses caused and/or suffered as a result of any use of and/or
             posting of and/or appearance of the Comments on this website.
           </p>
           <p>
-            Mangya reserves the right to monitor all Comments and to remove any
-            Comments which can be considered inappropriate, offensive or causes
-            breach of these Terms and Conditions.
+            Calyantra reserves the right to monitor all Comments and to remove
+            any Comments which can be considered inappropriate, offensive or
+            causes breach of these Terms and Conditions.
           </p>
           <p>You warrant and represent that:</p>
           <ul>
@@ -113,7 +113,7 @@ export function Terms() {
             </li>
           </ul>
           <p>
-            You hereby grant Mangya a non-exclusive license to use, reproduce,
+            You hereby grant Calyantra a non-exclusive license to use, reproduce,
             edit and authorize others to use, reproduce and edit any of your
             Comments in any and all forms, formats or media.
           </p>
@@ -165,7 +165,7 @@ export function Terms() {
             that: (a) the link would not make us look unfavorably to ourselves
             or to our accredited businesses; (b) the organization does not have
             any negative records with us; (c) the benefit to us from the
-            visibility of the hyperlink compensates the absence of Mangya; and
+            visibility of the hyperlink compensates the absence of Calyantra; and
             (d) the link is in the context of general resource information.
           </p>
           <p>
@@ -178,7 +178,7 @@ export function Terms() {
           <p>
             If you are one of the organizations listed in paragraph 2 above and
             are interested in linking to our website, you must inform us by
-            sending an e-mail to Mangya. Please include your name, your
+            sending an e-mail to Calyantra. Please include your name, your
             organization name, contact information as well as the URL of your
             site, a list of any URLs from which you intend to link to our
             Website, and a list of the URLs on our site to which you would like
@@ -195,7 +195,7 @@ export function Terms() {
             </li>
           </ul>
           <p>
-            No use of Mangya's logo or other artwork will be allowed for linking
+            No use of Calyantra's logo or other artwork will be allowed for linking
             absent a trademark license agreement.
           </p>
 
@@ -217,13 +217,16 @@ export function Terms() {
           </p>
 
           <h2>Your Privacy</h2>
-          <p>Please read <a
-        href="https://mangya.tech/privacy"
-        rel="external nofollow noopener"
-        target="_blank"
-      >
-       Privacy Policy
-      </a></p>
+          <p>
+            Please read{" "}
+            <a
+              href="https://calyantra.com/privacy"
+              rel="external nofollow noopener"
+              target="_blank"
+            >
+              Privacy Policy
+            </a>
+          </p>
 
           <h2>Reservation of Rights</h2>
           <p>
@@ -298,7 +301,7 @@ export function Privacy() {
         <Grid item xs={12} sm={12}>
           <h1>Privacy Policy</h1>
           <p>Last updated: December 12, 2021</p>
-          <p>Welcome to Mangya!</p>
+          <p>Welcome to Calyantra!</p>
           <p>
             This Privacy Policy describes Our policies and procedures on the
             collection, use and disclosure of Your information when You use the
@@ -330,7 +333,7 @@ export function Privacy() {
               <p>
                 <strong>Company</strong> (referred to as either &quot;the
                 Company&quot;, &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot;
-                in this Agreement) refers to Mangya.
+                in this Agreement) refers to Calyantra.
               </p>
             </li>
             <li>
@@ -384,13 +387,13 @@ export function Privacy() {
             </li>
             <li>
               <p>
-                <strong>Website</strong> refers to Mangya, accessible from{" "}
+                <strong>Website</strong> refers to Calyantra, accessible from{" "}
                 <a
-                  href="https://mangya.tech"
+                  href="https://calyantra.com"
                   rel="external nofollow noopener"
                   target="_blank"
                 >
-                  https://mangya.tech
+                  https://calyantra.com
                 </a>
               </p>
             </li>
@@ -798,7 +801,7 @@ export function Privacy() {
             us:
           </p>
           <ul>
-            <li>By email: help@mangya.tech</li>
+            <li>By email: help@calyantra.com</li>
           </ul>
         </Grid>
       </Grid>

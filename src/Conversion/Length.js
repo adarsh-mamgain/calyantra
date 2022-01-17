@@ -21,10 +21,10 @@ export default function Length() {
   var [result, setResult] = React.useState();
 
   const convert = (event) => {
-    if (type.pathname == "/convert/miles-to-kilometer") {
+    if (type.pathname == "/conversion/miles-to-kilometer") {
       setResult(event.target.value * 1.60934);
     } else {
-      setResult(event.target.value * 10);
+      setResult(event.target.value / 10);
     }
   };
 

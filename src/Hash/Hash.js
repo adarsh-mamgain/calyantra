@@ -1,12 +1,9 @@
 import React from "react";
-import { TextSHA, FileSHA } from "./SHA";
-import PageNotFound from "../Components/Static/404";
-import { Routes, Route } from "react-router";
 import { Link } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
 import { Helmet } from "react-helmet";
 
-export function HashHome() {
+export default function HashHome() {
   return (
     <Box sx={{ px: 20, m: 3 }}>
       <Helmet>
@@ -67,26 +64,5 @@ export function HashHome() {
         <Typography>SHA512</Typography>
       </Link>
     </Box>
-  );
-}
-
-export default function Calculator() {
-  return (
-    <Routes>
-      <Route path="" element={<HashHome />} />
-      <Route path="/text-md5" element={<TextSHA />} />
-      <Route path="/text-sha1" element={<TextSHA />} />
-      <Route path="/text-sha224" element={<TextSHA />} />
-      <Route path="/text-sha256" element={<TextSHA />} />
-      <Route path="/text-sha384" element={<TextSHA />} />
-      <Route path="/text-sha512" element={<TextSHA />} />
-      <Route path="/file-md5" element={<FileSHA />} />
-      <Route path="/file-sha1" element={<FileSHA />} />
-      <Route path="/file-sha224" element={<FileSHA />} />
-      <Route path="/file-sha256" element={<FileSHA />} />
-      <Route path="/file-sha384" element={<FileSHA />} />
-      <Route path="/file-sha512" element={<FileSHA />} />
-      <Route path="*" element={<PageNotFound />} />
-    </Routes>
   );
 }

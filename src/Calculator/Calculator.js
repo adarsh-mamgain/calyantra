@@ -1,14 +1,9 @@
 import React from "react";
-import GPA from "./GPA";
-import SimpleInterest from "./SimpleInterest";
-import SimpleCalculator from "./SimpleCalculator";
-import PageNotFound from "../Components/Static/404"
-import { Routes, Route } from "react-router";
 import { Link } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
 import { Helmet } from "react-helmet";
 
-export function CalculatorHome() {
+export default function CalculatorHome() {
   return (
     <Box sx={{ px: 20, m: 3 }}>
       <Helmet>
@@ -40,17 +35,5 @@ export function CalculatorHome() {
         <Typography variant="h2">Simple Calculator</Typography>
       </Link>
     </Box>
-  );
-}
-
-export default function Calculator() {
-  return (
-    <Routes>
-      <Route path="" element={<CalculatorHome />} />
-      <Route path="/gpa" element={<GPA />} />
-      <Route path="/simple-interest" element={<SimpleInterest />} />
-      <Route path="/simple-calculator" element={<SimpleCalculator />} />
-      <Route path="*" element={<PageNotFound />} />
-    </Routes>
   );
 }

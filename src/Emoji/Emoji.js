@@ -1,13 +1,9 @@
 import React from "react";
-import PageNotFound from "../Components/Static/404";
-import { Routes, Route } from "react-router";
 import { Link } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
 import { Helmet } from "react-helmet";
-import AppleEmoji from "./AppleEmoji";
-import TextEmoji from "./TextEmoji";
 
-export function EmojiHome() {
+export default function EmojiHome() {
   return (
     <Box sx={{ px: 20, m: 3 }}>
       <Helmet>
@@ -36,15 +32,5 @@ export function EmojiHome() {
         <Typography variant="h2">Text</Typography>
       </Link>
     </Box>
-  )
-}
-
-export default function Emoji() {
-  return (
-    <Routes>
-      <Route path="" element={<EmojiHome />} />
-      <Route path="/apple" element={<AppleEmoji />} />
-      <Route path="/text" element={<TextEmoji />} />
-    </Routes>
   )
 }

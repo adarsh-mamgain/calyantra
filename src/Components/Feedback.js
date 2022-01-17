@@ -46,7 +46,7 @@ export default function Feedback() {
   const handleSubmit = (e) => {
     e.preventDefault();
     var data = JSON.stringify({
-      "query_string": `INSERT INTO \"adarsh-mamgain/Tools-Website\".\"request\" VALUES (${message}, ${new Date().toLocaleString()}, '00:00:00 +05:30', 'https://mangya.tech${location.pathname}');`
+      "query_string": `INSERT INTO \"adarsh-mamgain/Tools-Website\".\"request\" VALUES (${message}, ${new Date().toLocaleString()}, '00:00:00 +05:30', 'https://calyantra.com${location.pathname}');`
     });
 
     var config = {

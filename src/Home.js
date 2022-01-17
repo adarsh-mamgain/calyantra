@@ -42,7 +42,7 @@ export default function Home() {
             secondary="Caluclate academic, health, time and get perfect results"
           />
         </ListItemButton>
-        <ListItemButton sx={{ width: "33%" }} component={Link} href="/convert">
+        <ListItemButton sx={{ width: "33%" }} component={Link} href="/conversion">
           <ListItemIcon>
             <SettingsIcon />
           </ListItemIcon>

@@ -1,13 +1,9 @@
 import React from "react";
-import Length from "./Length";
-import Litre from "./Litre";
-import PageNotFound from "../Components/Static/404";
-import { Routes, Route } from "react-router";
 import { Link } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
 import { Helmet } from "react-helmet";
 
-export function ConversionHome() {
+export default function ConversionHome() {
   return (
     <Box sx={{ px: 20, m: 3 }}>
       <Helmet>
@@ -47,19 +43,5 @@ export function ConversionHome() {
         <Typography>Millilitre to Litre</Typography>
       </Link>
     </Box>
-  );
-}
-
-export default function Conversion() {
-  return (
-    <Routes>
-      <Route path="" element={<ConversionHome />} />
-      <Route path="/millimeter-to-centimeter" element={<Length />} />
-      <Route path="/centimeter-to-meter" element={<Length />} />
-      <Route path="/meter-to-kilometer" element={<Length />} />
-      <Route path="/miles-to-kilometer" element={<Length />} />
-      <Route path="/millilitre-to-litre" element={<Litre />} />
-      <Route path="*" element={<PageNotFound />} />
-    </Routes>
   );
 }

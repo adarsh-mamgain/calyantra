@@ -2,86 +2,158 @@
 
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.mangya.tech</loc>
-    <lastmod>2021-12-08</lastmod>
+    <loc>https://www.calyantra.com</loc>
+    <lastmod>2022-01-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
   <url>
-    <loc>https://www.mangya.tech/calculator</loc>
-    <lastmod>2021-12-08</lastmod>
+    <loc>https://www.calyantra.com/calculator</loc>
+    <lastmod>2022-01-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
   <url>
-    <loc>https://www.mangya.tech/calculator/gpa</loc>
-    <lastmod>2021-12-08</lastmod>
+    <loc>https://www.calyantra.com/calculator/gpa</loc>
+    <lastmod>2022-01-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
   <url>
-    <loc>https://www.mangya.tech/calculator/simple-interest</loc>
-    <lastmod>2021-12-08</lastmod>
+    <loc>https://www.calyantra.com/calculator/simple-interest</loc>
+    <lastmod>2022-01-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
   <url>
-    <loc>https://www.mangya.tech/convert</loc>
-    <lastmod>2021-12-08</lastmod>
+    <loc>https://www.calyantra.com/calculator/simple-calculator</loc>
+    <lastmod>2022-01-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
   <url>
-    <loc>https://www.mangya.tech/convert/length</loc>
-    <lastmod>2021-12-08</lastmod>
+    <loc>https://www.calyantra.com/conversion</loc>
+    <lastmod>2022-01-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
   <url>
-    <loc>https://www.mangya.tech/convert/litre</loc>
-    <lastmod>2021-12-08</lastmod>
+    <loc>https://www.calyantra.com/conversion/millimeter-to-centimeter</loc>
+    <lastmod>2022-01-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
   <url>
-    <loc>https://www.mangya.tech/hash</loc>
-    <lastmod>2021-12-08</lastmod>
+    <loc>https://www.calyantra.com/conversion/centimeter-to-meter</loc>
+    <lastmod>2022-01-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
   <url>
-    <loc>https://www.mangya.tech/hash/md5</loc>
-    <lastmod>2021-12-08</lastmod>
+    <loc>https://www.calyantra.com/conversion/meter-to-kilometer</loc>
+    <lastmod>2022-01-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
   <url>
-    <loc>https://www.mangya.tech/hash/sha1</loc>
-    <lastmod>2021-12-08</lastmod>
+    <loc>https://www.calyantra.com/conversion/miles-to-kilometer</loc>
+    <lastmod>2022-01-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
   <url>
-    <loc>https://www.mangya.tech/hash/sha224</loc>
-    <lastmod>2021-12-08</lastmod>
+    <loc>https://www.calyantra.com/conversion/millilitre-to-litre</loc>
+    <lastmod>2022-01-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
   <url>
-    <loc>https://www.mangya.tech/hash/sha256</loc>
-    <lastmod>2021-12-08</lastmod>
+    <loc>https://www.calyantra.com/hash</loc>
+    <lastmod>2022-01-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
   <url>
-    <loc>https://www.mangya.tech/hash/sha384</loc>
-    <lastmod>2021-12-08</lastmod>
+    <loc>https://www.calyantra.com/hash/text-md5</loc>
+    <lastmod>2022-01-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
   <url>
-    <loc>https://www.mangya.tech/hash/sha512</loc>
-    <lastmod>2021-12-08</lastmod>
+    <loc>https://www.calyantra.com/hash/text-sha1</loc>
+    <lastmod>2022-01-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>https://www.calyantra.com/hash/text-sha224</loc>
+    <lastmod>2022-01-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>https://www.calyantra.com/hash/text-sha256</loc>
+    <lastmod>2022-01-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>https://www.calyantra.com/hash/text-sha384</loc>
+    <lastmod>2022-01-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>https://www.calyantra.com/hash/text-sha512</loc>
+    <lastmod>2022-01-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>https://www.calyantra.com/hash/file-md5</loc>
+    <lastmod>2022-01-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>https://www.calyantra.com/hash/file-sha1</loc>
+    <lastmod>2022-01-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>https://www.calyantra.com/hash/file-sha224</loc>
+    <lastmod>2022-01-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>https://www.calyantra.com/hash/file-sha256</loc>
+    <lastmod>2022-01-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>https://www.calyantra.com/hash/file-sha384</loc>
+    <lastmod>2022-01-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>https://www.calyantra.com/hash/file-sha512</loc>
+    <lastmod>2022-01-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>https://www.calyantra.com/emoji/apple</loc>
+    <lastmod>2022-01-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>https://www.calyantra.com/emoji/text</loc>
+    <lastmod>2022-01-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>

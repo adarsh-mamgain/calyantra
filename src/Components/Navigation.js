@@ -8,8 +8,8 @@ export default function Navigation() {
         <Toolbar>
           <Link href="/">
             <Badge color="secondary" badgeContent={"BETA"}>
-              <Typography color={"white"} variant="h6">
-                QuickTool
+              <Typography color={"white"} sx={{ fontSize: 20 }}>
+                Calyantra
               </Typography>
             </Badge>
           </Link>
