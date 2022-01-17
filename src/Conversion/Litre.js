@@ -16,10 +16,10 @@ import Feedback from "../Components/Feedback";
 import Crumbs from "../Components/Crumbs";
 
 export default function Litre() {
-  const [result, setResult] = React.useState(0);
+  var [result, setResult] = React.useState();
 
   const convert = (event) => {
-    setResult(event/10);
+    setResult(event.target.value / 1000);
   };
 
   return (

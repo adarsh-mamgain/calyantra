@@ -29,11 +29,22 @@ export function ConversionHome() {
         <meta property="twitter:description" content="Convert ✍️ length from foot to metre, metre to centimeter. Liquids from litre to millilitre. Temperature ℃℉ from fahrenheit to celsius, kelvin to celsius." />
         <meta property="twitter:image" content="https://mangya.tech/illustration.svg" />
       </Helmet>
-      <Link underline="none" to="length">
-        <Typography variant="h2">Length</Typography>
+      <h1>Length</h1>
+      <Link underline="none" to="millimeter-to-centimeter">
+        <Typography>Millimeter to Centimeter</Typography>
       </Link>
-      <Link underline="none" to="litre">
-        <Typography variant="h2">Litre</Typography>
+      <Link underline="none" to="centimeter-to-meter">
+        <Typography>Centimeter to Metre</Typography>
+      </Link>
+      <Link underline="none" to="meter-to-kilometer">
+        <Typography>Metre to Killometer</Typography>
+      </Link>
+      <Link underline="none" to="miles-to-kilometer">
+        <Typography>Miles to Killometer</Typography>
+      </Link>
+      <h1>Litre</h1>
+      <Link underline="none" to="millilitre-to-litre">
+        <Typography>Millilitre to Litre</Typography>
       </Link>
     </Box>
   );
@@ -43,8 +54,11 @@ export default function Conversion() {
   return (
     <Routes>
       <Route path="" element={<ConversionHome />} />
-      <Route path="/length" element={<Length />} />
-      <Route path="/litre" element={<Litre />} />
+      <Route path="/millimeter-to-centimeter" element={<Length />} />
+      <Route path="/centimeter-to-meter" element={<Length />} />
+      <Route path="/meter-to-kilometer" element={<Length />} />
+      <Route path="/miles-to-kilometer" element={<Length />} />
+      <Route path="/millilitre-to-litre" element={<Litre />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

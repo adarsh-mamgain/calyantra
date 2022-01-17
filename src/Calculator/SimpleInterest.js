@@ -18,42 +18,66 @@ import Crumbs from "../Components/Crumbs";
 import { ResponsivePie } from "@nivo/pie";
 
 export default function SimpleInterest() {
-  var [matrix, setMatrix] = React.useState([100, 7, 1]);
-  var [roi, setROI] = React.useState(7);
-  var [result, setResult] = React.useState(1070);
+  var [calc, setCalc] = React.useState({
+    principal: 100,
+    interest: 7,
+    time: 1,
+    roi: 7,
+    result: 107,
+  });
 
   const pieData = [
     {
       id: "Principal",
       label: "Principal",
-      value: matrix[0],
+      value: calc.principal,
       color: "hsl(167, 70%, 50%)",
     },
     {
       id: "Interest",
       label: "Interest",
-      value: matrix[1],
+      value: calc.roi,
       color: "hsl(119, 70%, 50%)",
     },
   ];
-  const handleSliderChange = (event, key) => {
-    let copy = [...matrix];
-    copy[key] = Number(event.target.value);
-    setMatrix(copy);
-    calculateInterest(copy);
+
+  const handlePrincipal = (event) => {
+    setCalc({
+      ...calc,
+      principal: Number(event.target.value),
+      roi: Number((event.target.value * calc.interest * calc.time) / 100),
+      result: Number(
+        Number(event.target.value) +
+          Number((event.target.value * calc.interest * calc.time) / 100)
+      ),
+    });
+    console.log(calc);
   };
 
-  const handleInputChange = (event, key) => {
-    let copy = [...matrix];
-    copy[key] = Number(event.target.value);
-    setMatrix(copy);
-    calculateInterest(copy);
+  const handleInterest = (event) => {
+    setCalc({
+      ...calc,
+      interest: Number(event.target.value),
+      roi: Number((calc.principal * event.target.value * calc.time) / 100),
+      result: Number(
+        calc.principal +
+          Number((calc.principal * event.target.value * calc.time) / 100)
+      ),
+    });
+    console.log(calc);
   };
 
-  function calculateInterest(copy) {
-    setROI(Number((copy[2] * (copy[0] * copy[1])) / 100));
-    setResult(copy[0] + interest);
-    console.log(pieData);
+  const handleTime = (event) => {
+    setCalc({
+      ...calc,
+      time: Number(event.target.value),
+      roi: Number((calc.principal * calc.interest * event.target.value) / 100),
+      result: Number(
+        calc.principal +
+          Number((calc.principal * calc.interest * event.target.value) / 100)
+      ),
+    });
+    console.log(calc);
   };
 
   return (
@@ -76,17 +100,16 @@ export default function SimpleInterest() {
                       hiddenLabel
                       required
                       key="0"
-                      sx={{ width: 150 }}
                       size="small"
                       variant="filled"
-                      value={matrix[0]}
-                      onChange={handleInputChange(0)}
+                      value={calc.principal}
+                      onChange={(e) => handlePrincipal(e)}
                       type="number"
                       id="filled-principal-amount"
                     />
                   </TableCell>
                   <TableCell rowSpan={6}>
-                    <Box width={400} height={350}>
+                    <Box width={350} height={300}>
                       <ResponsivePie
                         data={pieData}
                         margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
@@ -102,17 +125,7 @@ export default function SimpleInterest() {
                         enableArcLinkLabels={false}
                         arcLabel="id"
                       />
-                      <Typography>Principal is: {matrix[0]}</Typography>
                     </Box>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell colSpan={2}>
-                    <Slider
-                      aria-label="principal"
-                      value={typeof value === 'number' ? matrix[0] : 0}
-                      onChange={handleSliderChange(1)}
-                    />
                   </TableCell>
                 </TableRow>
                 <TableRow>
@@ -122,22 +135,12 @@ export default function SimpleInterest() {
                       hiddenLabel
                       required
                       key="1"
-                      sx={{ width: 150 }}
                       size="small"
                       variant="filled"
-                      value={matrix[1]}
-                      onChange={handleInputChange(0)}
+                      value={calc.interest}
+                      onChange={(e) => handleInterest(e)}
                       type="number"
                       id="filled-interest"
-                    />
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell colSpan={2}>
-                    <Slider
-                      aria-label="interest"
-                      value={typeof value === 'number' ? matrix[1] : 0}
-                      onChange={handleSliderChange(1)}
                     />
                   </TableCell>
                 </TableRow>
@@ -148,23 +151,43 @@ export default function SimpleInterest() {
                       hiddenLabel
                       required
                       key="2"
-                      sx={{ width: 150 }}
                       size="small"
                       variant="filled"
-                      value={matrix[2]}
-                      onChange={handleInputChange}
+                      value={calc.time}
+                      onChange={(e) => handleTime(e)}
                       type="number"
                       id="filled-time"
                     />
                   </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell colSpan={2}>
-                    <Slider
-                      aria-label="time"
-                      value={typeof value === 'number' ? matrix[2] : 0}
-                      onChange={handleSliderChange}
-                    />
+                  <TableCell>
+                    <Typography variant="body1" component="span">
+                      Principal:
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography>{calc.principal}</Typography>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>
+                    <Typography variant="body1" component="span">
+                      Interest:
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography>{calc.roi}</Typography>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>
+                    <Typography variant="body1" component="span">
+                      Total return:
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography>{calc.result}</Typography>
                   </TableCell>
                 </TableRow>
               </TableBody>

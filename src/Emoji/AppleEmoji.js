@@ -1821,11 +1821,12 @@ export default function AppleEmoji() {
       let original = [...opened]
       original[index] = false;
       setOpen(original);
-    }, 2000);
+    }, 1000);
   };
 
   return (
     <Box sx={{ px: 20, m: 3 }}>
+      <Crumbs />
       <Grid container justifyContent="center">
         {emoticons.map(
           (options, index) => (

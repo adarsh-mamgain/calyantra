@@ -14,12 +14,18 @@ import {
 import Feedback from "../Components/Feedback";
 // import Donate from "../Components/Donate";
 import Crumbs from "../Components/Crumbs";
+import { useLocation } from "react-router-dom";
 
 export default function Length() {
-  const [result, setResult] = React.useState(0);
+  const type = useLocation();
+  var [result, setResult] = React.useState();
 
   const convert = (event) => {
-    setResult(event/10);
+    if (type.pathname == "/convert/miles-to-kilometer") {
+      setResult(event.target.value * 1.60934);
+    } else {
+      setResult(event.target.value * 10);
+    }
   };
 
   return (
@@ -57,13 +63,14 @@ export default function Length() {
                   <TableCell>
                     <TextField
                       hiddenLabel
-                      required
                       sx={{ width: 200 }}
                       size="small"
                       variant="filled"
                       value={result}
-                      type="number"
                       id="filled-credit"
+                      InputProps={{
+                        readOnly: true,
+                      }}
                     />
                   </TableCell>
                 </TableRow>

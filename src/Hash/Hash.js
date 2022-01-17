@@ -1,5 +1,5 @@
 import React from "react";
-import SHA from "./SHA";
+import { TextSHA, FileSHA } from "./SHA";
 import PageNotFound from "../Components/Static/404";
 import { Routes, Route } from "react-router";
 import { Link } from "react-router-dom";
@@ -28,23 +28,43 @@ export function HashHome() {
         <meta property="twitter:description" content="Hash 🔐 your text or files 🗂 to MD5, SHA1, SHA224, SHA256, SHA384 and SHA512." />
         <meta property="twitter:image" content="https://mangya.tech/illustration.svg" />
       </Helmet>
-      <Link underline="none" to="md5">
-        <Typography variant="h2">MD5</Typography>
+      <h1>Text</h1>
+      <Link underline="none" to="text-md5">
+        <Typography>MD5</Typography>
       </Link>
-      <Link underline="none" to="sha1">
-        <Typography variant="h2">SHA1</Typography>
+      <Link underline="none" to="text-sha1">
+        <Typography>SHA1</Typography>
       </Link>
-      <Link underline="none" to="sha224">
-        <Typography variant="h2">SHA224</Typography>
+      <Link underline="none" to="text-sha224">
+        <Typography>SHA224</Typography>
       </Link>
-      <Link underline="none" to="sha256">
-        <Typography variant="h2">SHA256</Typography>
+      <Link underline="none" to="text-sha256">
+        <Typography>SHA256</Typography>
       </Link>
-      <Link underline="none" to="sha384">
-        <Typography variant="h2">SHA384</Typography>
+      <Link underline="none" to="text-sha384">
+        <Typography>SHA384</Typography>
       </Link>
-      <Link underline="none" to="sha512">
-        <Typography variant="h2">SHA512</Typography>
+      <Link underline="none" to="text-sha512">
+        <Typography>SHA512</Typography>
+      </Link>
+      <h1>File</h1>
+      <Link underline="none" to="file-md5">
+        <Typography>MD5</Typography>
+      </Link>
+      <Link underline="none" to="file-sha1">
+        <Typography>SHA1</Typography>
+      </Link>
+      <Link underline="none" to="file-sha224">
+        <Typography>SHA224</Typography>
+      </Link>
+      <Link underline="none" to="file-sha256">
+        <Typography>SHA256</Typography>
+      </Link>
+      <Link underline="none" to="file-sha384">
+        <Typography>SHA384</Typography>
+      </Link>
+      <Link underline="none" to="file-sha512">
+        <Typography>SHA512</Typography>
       </Link>
     </Box>
   );
@@ -54,12 +74,18 @@ export default function Calculator() {
   return (
     <Routes>
       <Route path="" element={<HashHome />} />
-      <Route path="/md5" element={<SHA />} />
-      <Route path="/sha1" element={<SHA />} />
-      <Route path="/sha224" element={<SHA />} />
-      <Route path="/sha256" element={<SHA />} />
-      <Route path="/sha384" element={<SHA />} />
-      <Route path="/sha512" element={<SHA />} />
+      <Route path="/text-md5" element={<TextSHA />} />
+      <Route path="/text-sha1" element={<TextSHA />} />
+      <Route path="/text-sha224" element={<TextSHA />} />
+      <Route path="/text-sha256" element={<TextSHA />} />
+      <Route path="/text-sha384" element={<TextSHA />} />
+      <Route path="/text-sha512" element={<TextSHA />} />
+      <Route path="/file-md5" element={<FileSHA />} />
+      <Route path="/file-sha1" element={<FileSHA />} />
+      <Route path="/file-sha224" element={<FileSHA />} />
+      <Route path="/file-sha256" element={<FileSHA />} />
+      <Route path="/file-sha384" element={<FileSHA />} />
+      <Route path="/file-sha512" element={<FileSHA />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
