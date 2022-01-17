@@ -2,13 +2,13 @@ import React from "react";
 import { Box, Collapse, Alert, IconButton, Button } from "@mui/material";
 import PaymentIcon from "@mui/icons-material/Payment";
 import CloseIcon from "@mui/icons-material/Close";
-
+import donate from "../../public/QrCode.png";
 export default function Feedback() {
   const [open, setOpen] = React.useState(false);
 
   const handleClick = (e) => {
     e.preventDefault();
-    setOpen(true);
+    open === false ? setOpen(true): setOpen(false);
   };
 
   return (
@@ -38,8 +38,8 @@ export default function Feedback() {
           sx={{ mb: 2 }}
         >
           Donated thank you
-          {/* <img src="/public/QrCode.jpeg" width="100%" /> */}
         </Alert>
+        <img src={donate} />
       </Collapse>
     </Box>
   );

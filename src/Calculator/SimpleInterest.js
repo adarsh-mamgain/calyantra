@@ -1,37 +1,83 @@
 import React from "react";
+import {
+  Box,
+  Typography,
+  TextField,
+  Grid,
+  Paper,
+  TableContainer,
+  TableRow,
+  Table,
+  TableBody,
+  TableCell,
+  Slider,
+} from "@mui/material";
+import Feedback from "../Components/Feedback";
+// import Donate from "../Components/Donate";
+import Crumbs from "../Components/Crumbs";
+import { ResponsivePie } from "@nivo/pie";
 
 export default function SimpleInterest() {
-  const n = 5,
-    m = 3;
-  var count = 0;
-  var [result, setResult] = React.useState(["Result"]);
-  var [matrix, setMatrix] = React.useState(
-    Array.from({ length: n }, () => Array.from({ length: m }, () => null))
-  );
-  const handleChange = (row, column, event) => {
-    let copy = [...matrix];
-    copy[row][column] = event.target.value;
-    setMatrix(copy);
+  var [calc, setCalc] = React.useState({
+    principal: 100,
+    interest: 7,
+    time: 1,
+    roi: 7,
+    result: 107,
+  });
+
+  const pieData = [
+    {
+      id: "Principal",
+      label: "Principal",
+      value: calc.principal,
+      color: "hsl(167, 70%, 50%)",
+    },
+    {
+      id: "Interest",
+      label: "Interest",
+      value: calc.roi,
+      color: "hsl(119, 70%, 50%)",
+    },
+  ];
+
+  const handlePrincipal = (event) => {
+    setCalc({
+      ...calc,
+      principal: Number(event.target.value),
+      roi: Number((event.target.value * calc.interest * calc.time) / 100),
+      result: Number(
+        Number(event.target.value) +
+          Number((event.target.value * calc.interest * calc.time) / 100)
+      ),
+    });
+    console.log(calc);
   };
 
-  const gpaCalculate = () => {
-    let copy = [...matrix];
-    var credit,
-      grade,
-      sumPoints = 0,
-      sumCredits = 0;
-    copy.forEach((rows) => {
-      if (rows[1] === "") {
-        credit = 0;
-      } else {
-        credit = Number(rows[1]);
-      }
-      grade = Number(rows[2]);
-      sumPoints += credit * grade;
-      sumCredits += credit;
+  const handleInterest = (event) => {
+    setCalc({
+      ...calc,
+      interest: Number(event.target.value),
+      roi: Number((calc.principal * event.target.value * calc.time) / 100),
+      result: Number(
+        calc.principal +
+          Number((calc.principal * event.target.value * calc.time) / 100)
+      ),
     });
-    var gpa = sumPoints / sumCredits;
-    setResult(gpa.toFixed(2));
+    console.log(calc);
+  };
+
+  const handleTime = (event) => {
+    setCalc({
+      ...calc,
+      time: Number(event.target.value),
+      roi: Number((calc.principal * calc.interest * event.target.value) / 100),
+      result: Number(
+        calc.principal +
+          Number((calc.principal * calc.interest * event.target.value) / 100)
+      ),
+    });
+    console.log(calc);
   };
 
   return (
@@ -45,102 +91,112 @@ export default function SimpleInterest() {
             elevation={3}
             sx={{ width: "max-content" }}
           >
-            <Table aria-label="GPA calculating table">
-              <TableHead>
-                <TableRow>
-                  <TableCell>Sr.</TableCell>
-                  <TableCell>Course</TableCell>
-                  <TableCell>Credits</TableCell>
-                  <TableCell>Grades</TableCell>
-                </TableRow>
-              </TableHead>
+            <Table aria-label="Simple Interest calculating table">
               <TableBody>
-                {matrix.map((rows, rowIndex) => (
-                  <TableRow
-                    key={rowIndex}
-                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                  >
-                    <TableCell key={0} component="th" scope="row" align="right">
-                      {(count += 1)}
-                    </TableCell>
-                    <TableCell>
-                      <TextField
-                        hiddenLabel
-                        required
-                        sx={{ width: 200 }}
-                        size="small"
-                        variant="filled"
-                        // key={1}
-                        onChange={(e) => handleChange(rowIndex, 0, e)}
-                        id="filled-course-name"
-                      />
-                    </TableCell>
-                    <TableCell>
-                      <TextField
-                        hiddenLabel
-                        required
-                        sx={{ width: 100 }}
-                        size="small"
-                        variant="filled"
-                        // key={2}
-                        onChange={(e) => handleChange(rowIndex, 1, e)}
-                        type="number"
-                        id="filled-credit"
-                      />
-                    </TableCell>
-                    <TableCell>
-                      <TextField
-                        hiddenLabel
-                        required
-                        sx={{ width: 90 }}
-                        size="small"
-                        variant="filled"
-                        // key={3}
-                        // ! here change the grades for particular key
-                        onChange={(e) => handleChange(rowIndex, 2, e)}
-                        id="filled-select-grade"
-                        defaultValue={"null"}
-                        select
-                      >
-                        {gradesList.map((option) => (
-                          <MenuItem key={option.label} value={option.value}>
-                            {option.label}
-                          </MenuItem>
-                        ))}
-                      </TextField>
-                    </TableCell>
-                  </TableRow>
-                ))}
                 <TableRow>
-                  <TableCell colSpan={2} align="right">
-                    <Button
-                      variant="contained"
-                      align="right"
-                      onClick={gpaCalculate}
-                    >
-                      Calculate
-                    </Button>
-                  </TableCell>
-                  <TableCell colSpan={2} align="right">
+                  <TableCell>Principal Amount</TableCell>
+                  <TableCell align="right">
                     <TextField
                       hiddenLabel
-                      sx={{ width: "100%" }}
+                      required
+                      key="0"
                       size="small"
                       variant="filled"
-                      value={result}
-                      id="filled-read-only-result"
-                      InputProps={{
-                        readOnly: true,
-                      }}
+                      value={calc.principal}
+                      onChange={(e) => handlePrincipal(e)}
+                      type="number"
+                      id="filled-principal-amount"
                     />
+                  </TableCell>
+                  <TableCell rowSpan={6}>
+                    <Box width={350} height={300}>
+                      <ResponsivePie
+                        data={pieData}
+                        margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
+                        innerRadius={0.5}
+                        padAngle={0.7}
+                        cornerRadius={3}
+                        activeOuterRadiusOffset={8}
+                        borderWidth={1}
+                        borderColor={{
+                          from: "color",
+                          modifiers: [["darker", 0.2]],
+                        }}
+                        enableArcLinkLabels={false}
+                        arcLabel="id"
+                      />
+                    </Box>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Rate of Interest (p.a)</TableCell>
+                  <TableCell align="right">
+                    <TextField
+                      hiddenLabel
+                      required
+                      key="1"
+                      size="small"
+                      variant="filled"
+                      value={calc.interest}
+                      onChange={(e) => handleInterest(e)}
+                      type="number"
+                      id="filled-interest"
+                    />
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Time period</TableCell>
+                  <TableCell align="right">
+                    <TextField
+                      hiddenLabel
+                      required
+                      key="2"
+                      size="small"
+                      variant="filled"
+                      value={calc.time}
+                      onChange={(e) => handleTime(e)}
+                      type="number"
+                      id="filled-time"
+                    />
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>
+                    <Typography variant="body1" component="span">
+                      Principal:
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography>{calc.principal}</Typography>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>
+                    <Typography variant="body1" component="span">
+                      Interest:
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography>{calc.roi}</Typography>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>
+                    <Typography variant="body1" component="span">
+                      Total return:
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography>{calc.result}</Typography>
                   </TableCell>
                 </TableRow>
               </TableBody>
             </Table>
           </TableContainer>
         </Grid>
-        <Grid item xs={0} sm={3} bgcolor="grey">
+        <Grid item xs={0} sm={3}>
           <Feedback />
+          {/* <Donate /> */}
           <Typography variant="h1">ADS</Typography>
         </Grid>
       </Grid>

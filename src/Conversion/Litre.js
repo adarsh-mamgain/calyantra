@@ -11,15 +11,15 @@ import {
   TableBody,
   TableCell,
 } from "@mui/material";
-import Feedback from "../Sidebar/Feedback";
-import Donate from "../Sidebar/Donate";
-import Crumbs from "../Crumbs";
+import Feedback from "../Components/Feedback";
+// import Donate from "../Components/Donate";
+import Crumbs from "../Components/Crumbs";
 
 export default function Litre() {
-  const [result, setResult] = React.useState(0);
+  var [result, setResult] = React.useState();
 
   const convert = (event) => {
-    setResult(event/10);
+    setResult(event.target.value / 1000);
   };
 
   return (
@@ -71,9 +71,9 @@ export default function Litre() {
             </Table>
           </TableContainer>
         </Grid>
-        <Grid item xs={0} sm={3} bgcolor="grey">
+        <Grid item xs={0} sm={3}>
           <Feedback />
-          <Donate />
+          {/* <Donate /> */}
           <Typography variant="h1">ADS</Typography>
         </Grid>
       </Grid>

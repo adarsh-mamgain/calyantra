@@ -14,6 +14,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import TextFormatIcon from "@mui/icons-material/TextFormat";
 import LoopIcon from "@mui/icons-material/Loop";
+import EmojiEmotionsIcon from "@mui/icons-material/EmojiEmotions";
 
 export default function Home() {
   return (
@@ -31,16 +32,6 @@ export default function Home() {
         <ListItemButton
           sx={{ width: "33%" }}
           component={Link}
-          href="/convert"
-        >
-          <ListItemIcon>
-            <SettingsIcon />
-          </ListItemIcon>
-          <ListItemText primary="Conversion" secondary="Convert every length from one to another" />
-        </ListItemButton>
-        <ListItemButton
-          sx={{ width: "33%" }}
-          component={Link}
           href="/calculator"
         >
           <ListItemIcon>
@@ -49,6 +40,15 @@ export default function Home() {
           <ListItemText
             primary="Calculators"
             secondary="Caluclate academic, health, time and get perfect results"
+          />
+        </ListItemButton>
+        <ListItemButton sx={{ width: "33%" }} component={Link} href="/conversion">
+          <ListItemIcon>
+            <SettingsIcon />
+          </ListItemIcon>
+          <ListItemText
+            primary="Conversion"
+            secondary="Convert every length from one to another"
           />
         </ListItemButton>
         <ListItemButton sx={{ width: "33%" }} component={Link} href="/hash">
@@ -60,7 +60,7 @@ export default function Home() {
             secondary="Get a hash for your text and files"
           />
         </ListItemButton>
-        <ListItemButton sx={{ width: "33%" }} component={Link} href="/generate">
+        {/* <ListItemButton sx={{ width: "33%" }} component={Link} href="/generate">
           <ListItemIcon>
             <LoopIcon />
           </ListItemIcon>
@@ -68,14 +68,23 @@ export default function Home() {
             primary="Generate"
             secondary="Create random passwords, paragraphs, names"
           />
-        </ListItemButton>
-        <ListItemButton sx={{ width: "33%" }} component={Link} href="/pdf">
+        </ListItemButton> */}
+        {/* <ListItemButton sx={{ width: "33%" }} component={Link} href="/pdf">
           <ListItemIcon>
             <PictureAsPdfIcon />
           </ListItemIcon>
           <ListItemText primary="PDF" />
+        </ListItemButton> */}
+        <ListItemButton sx={{ width: "33%" }} component={Link} href="/emoji">
+          <ListItemIcon>
+            <EmojiEmotionsIcon />
+          </ListItemIcon>
+          <ListItemText
+            primary="Emojis"
+            secondary="Get all Apple and text based emoticons"
+          />
         </ListItemButton>
-        <ListItemButton
+        {/* <ListItemButton
           sx={{ width: "33%" }}
           component={Link}
           href="/text-format"
@@ -90,7 +99,7 @@ export default function Home() {
             <CodeIcon />
           </ListItemIcon>
           <ListItemText primary="Code formatter" />
-        </ListItemButton>
+        </ListItemButton> */}
       </List>
     </Box>
   );

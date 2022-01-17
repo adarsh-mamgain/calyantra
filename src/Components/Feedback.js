@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+var axios = require("axios");
 import {
   Box,
   TextField,
@@ -45,31 +45,33 @@ export default function Feedback() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let formdata = new FormData();
-    formdata.append("type", type);
-    formdata.append("message", message);
-    formdata.append(
-      "url",
-      `https://onlinetool.herokuapp.com${location.pathname}`
-    );
-    formdata.append("date", new Date().toLocaleString() + "");
-    let reqOptions = {
-      url: `https://api.adarshmamgain.repl.co/updateform/${type}`,
-      method: "POST",
-      data: formdata,
+    var data = JSON.stringify({
+      "query_string": `INSERT INTO \"adarsh-mamgain/Tools-Website\".\"request\" VALUES (${message}, ${new Date().toLocaleString()}, '00:00:00 +05:30', 'https://calyantra.com${location.pathname}');`
+    });
+
+    var config = {
+      method: 'POST',
+      url: 'https://api.bit.io/api/v1beta/query/',
+      headers: { 
+        'Authorization': 'Bearer TQ57_fg5PRG6scw42U2knv54uXU8', 
+        'Accept': 'application/json', 
+        'Content-Type': 'application/json'
+      },
+      data : data
     };
 
-    axios
-      .request(reqOptions)
-      .then(function (response) {
-        setSubmitMsg(response.data);
-        setOpen(true);
-      })
-      .catch((error) => {
-        alert(
-          "Uh Oh! Couldn't submit your response :(\nWe are having problems ;("
-        );
-      });
+    axios(config)
+    .then(function (response) {
+      setSubmitMsg("Thank you for your response 😊");
+      setOpen(true);
+      console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+      alert(
+        "Uh Oh! Couldn't submit your response :(\nWe are having problems ;("
+      );
+      console.log(error);
+    });
   };
 
   return (

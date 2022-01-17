@@ -1,10 +1,10 @@
 {
-  "name": "tool-frontend",
+  "name": "calyantra.com",
   "version": "1.0.0",
   "description": "My tools website",
   "engines": {
     "node": "14.18.1",
-    "npm": "6.14.15"
+    "npm": "8.3.1"
   },
   "private": true,
   "main": "index.js",
@@ -13,7 +13,7 @@
     "start": "node server.js",
     "dev": "webpack serve --mode=development",
     "serve": "npm run build && serve -s build",
-    "build": "NODE_ENV=production webpack --mode=production"
+    "build": "npm i && NODE_ENV=production webpack --mode=production"
   },
   "author": "Adarsh Mamgain",
   "license": "ISC",
@@ -22,11 +22,14 @@
     "@emotion/styled": "^11.6.0",
     "@mui/icons-material": "^5.2.0",
     "@mui/material": "^5.2.1",
+    "@nivo/pie": "^0.74.1",
     "axios": "^0.24.0",
     "crypto-js": "^4.1.1",
     "express": "^4.17.1",
+    "firebase-tools": "^9.23.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0",
     "react-router-dom": "^6.0.2"
   },
   "devDependencies": {
