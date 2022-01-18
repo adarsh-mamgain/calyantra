@@ -3,6 +3,7 @@ import { useRoutes } from "react-router-dom";
 import CalculatorHome from "./Calculator/Calculator";
 import GPA from "./Calculator/GPA";
 import SimpleCalculator from "./Calculator/SimpleCalculator";
+import SimpleInterest from "./Calculator/SimpleInterest";
 import PageNotFound from "./Components/Static/404";
 import { Privacy, Terms } from "./Components/Static/Legal";
 import ConversionHome from "./Conversion/Conversion";
@@ -26,7 +27,7 @@ export default function Router() {
           children: [
             { path: "", element: <CalculatorHome /> },
             { path: "gpa", element: <GPA /> },
-            { path: "simple-interest", element: <CalculatorHome /> },
+            { path: "simple-interest", element: <SimpleInterest /> },
             { path: "simple-calculator", element: <SimpleCalculator /> },
           ],
         },
