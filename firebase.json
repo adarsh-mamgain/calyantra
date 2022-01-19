@@ -15,13 +15,7 @@
     "redirects": [
       {
         "source": "/sitemap.xml",
-        "destination": "/sitemap.xml",
-        "type": 301
-      },
-      {
-        "source": "/sitemap.xml/**",
-        "destination": "/sitemap.xml",
-        "type": 302
+        "destination": "/sitemap.xml"
       }
     ] 
   }
