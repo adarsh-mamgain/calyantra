@@ -8,17 +8,21 @@
     ],
     "rewrites": [
       {
-        "source": "/",
+        "source": "**",
         "destination": "/index.html"
-      },
-      {
-        "source": "/robots.txt",
-        "destination": "/robots.txt"
-      },
+      }
+    ],
+    "redirects": [
       {
         "source": "/sitemap.xml",
-        "destination": "/sitemap.xml"
+        "destination": "/sitemap.xml",
+        "type": 301
+      },
+      {
+        "source": "/sitemap.xml/**",
+        "destination": "/sitemap.xml",
+        "type": 302
       }
-    ]
+    ] 
   }
 }
