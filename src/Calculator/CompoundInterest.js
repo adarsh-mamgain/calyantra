@@ -10,20 +10,20 @@ import {
   Table,
   TableBody,
   TableCell,
-  Slider,
 } from "@mui/material";
 import Feedback from "../Components/Feedback";
 // import Donate from "../Components/Donate";
 import Crumbs from "../Components/Crumbs";
 import { ResponsivePie } from "@nivo/pie";
 
-export default function SimpleInterest() {
+export default function CompoundInterest() {
   var [calc, setCalc] = React.useState({
     principal: 100,
     interest: 7,
-    time: 1,
-    roi: 7,
-    result: 107,
+    time: 2,
+    roi: 14.49,
+    number: 1,
+    result: 114.49,
   });
 
   const pieData = [
@@ -31,13 +31,13 @@ export default function SimpleInterest() {
       id: "Principal",
       label: "Principal",
       value: calc.principal,
-      color: "hsl(167, 70%, 50%)",
+      color: "hsl(43, 100%, 50%)",
     },
     {
       id: "Interest",
       label: "Interest",
       value: calc.roi,
-      color: "hsl(119, 70%, 50%)",
+      color: "hsl(181, 89%, 40%)",
     },
   ];
 
@@ -45,10 +45,10 @@ export default function SimpleInterest() {
     setCalc({
       ...calc,
       principal: Number(event.target.value),
-      roi: Number((event.target.value * calc.interest * calc.time) / 100),
+      roi: 111,
       result: Number(
-        Number(event.target.value) +
-          Number((event.target.value * calc.interest * calc.time) / 100)
+        event.target.value *
+          Math.pow(1 + calc.interest / calc.number, calc.number * calc.time)
       ),
     });
     console.log(calc);
@@ -58,10 +58,13 @@ export default function SimpleInterest() {
     setCalc({
       ...calc,
       interest: Number(event.target.value),
-      roi: Number((calc.principal * event.target.value * calc.time) / 100),
+      roi: 222,
       result: Number(
-        calc.principal +
-          Number((calc.principal * event.target.value * calc.time) / 100)
+        calc.principal *
+          Math.pow(
+            1 + event.target.value / calc.number,
+            calc.number * calc.time
+          )
       ),
     });
     console.log(calc);
@@ -71,10 +74,29 @@ export default function SimpleInterest() {
     setCalc({
       ...calc,
       time: Number(event.target.value),
-      roi: Number((calc.principal * calc.interest * event.target.value) / 100),
+      roi: 444,
       result: Number(
-        calc.principal +
-          Number((calc.principal * calc.interest * event.target.value) / 100)
+        calc.principal *
+          Math.pow(
+            1 + calc.interest / calc.number,
+            calc.number * event.target.value
+          )
+      ),
+    });
+    console.log(calc);
+  };
+
+  const handleNumber = (event) => {
+    setCalc({
+      ...calc,
+      number: Number(event.target.value),
+      roi: 333,
+      result: Number(
+        calc.principal *
+          Math.pow(
+            1 + calc.interest / event.target.value,
+            event.target.value * calc.time
+          )
       ),
     });
     console.log(calc);
@@ -85,7 +107,7 @@ export default function SimpleInterest() {
       <Box sx={{ px: 20 }}>
         <Crumbs />
         <Typography color={"text.primary"} variant="h1">
-          Simple Interest Calculator
+          Compound Interest Calculator
         </Typography>
         <Grid container justifyContent="center" spacing={1}>
           <Grid item xs={12} sm={9}>
@@ -94,10 +116,10 @@ export default function SimpleInterest() {
               elevation={3}
               sx={{ width: "max-content" }}
             >
-              <Table aria-label="Simple Interest calculating table">
+              <Table aria-label="Compound Interest calculating table">
                 <TableBody>
                   <TableRow>
-                    <TableCell>Principal Amount</TableCell>
+                    <TableCell>Principal amount (P)</TableCell>
                     <TableCell align="right">
                       <TextField
                         hiddenLabel
@@ -115,6 +137,7 @@ export default function SimpleInterest() {
                       <Box width={350} height={300}>
                         <ResponsivePie
                           data={pieData}
+                          colors={{ datum: "data.color" }}
                           margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
                           innerRadius={0.5}
                           padAngle={0.7}
@@ -132,7 +155,7 @@ export default function SimpleInterest() {
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell>Rate of Interest (p.a)</TableCell>
+                    <TableCell>Rate of interest (r)</TableCell>
                     <TableCell align="right">
                       <TextField
                         hiddenLabel
@@ -148,7 +171,7 @@ export default function SimpleInterest() {
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell>Time period</TableCell>
+                    <TableCell>Time period (t)</TableCell>
                     <TableCell align="right">
                       <TextField
                         hiddenLabel
@@ -158,6 +181,22 @@ export default function SimpleInterest() {
                         variant="filled"
                         value={calc.time}
                         onChange={(e) => handleTime(e)}
+                        type="number"
+                        id="filled-time"
+                      />
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>Compounds / Period (n)</TableCell>
+                    <TableCell align="right">
+                      <TextField
+                        hiddenLabel
+                        required
+                        key="2"
+                        size="small"
+                        variant="filled"
+                        value={calc.number}
+                        onChange={(e) => handleNumber(e)}
                         type="number"
                         id="filled-time"
                       />

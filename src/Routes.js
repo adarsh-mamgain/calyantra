@@ -1,6 +1,7 @@
 import React from "react";
 import { useRoutes } from "react-router-dom";
 import CalculatorHome from "./Calculator/Calculator";
+import CompoundInterest from "./Calculator/CompoundInterest";
 import GPA from "./Calculator/GPA";
 import SimpleCalculator from "./Calculator/SimpleCalculator";
 import SimpleInterest from "./Calculator/SimpleInterest";
@@ -28,6 +29,7 @@ export default function Router() {
             { path: "", element: <CalculatorHome /> },
             { path: "gpa", element: <GPA /> },
             { path: "simple-interest", element: <SimpleInterest /> },
+            { path: "compound-interest", element: <CompoundInterest /> },
             { path: "simple-calculator", element: <SimpleCalculator /> },
           ],
         },

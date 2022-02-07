@@ -1,14 +1,14 @@
 import React from "react";
-import { Box, Collapse, Alert, IconButton, Button } from "@mui/material";
+import { Box, Collapse, Alert, Button } from "@mui/material";
 import PaymentIcon from "@mui/icons-material/Payment";
-import CloseIcon from "@mui/icons-material/Close";
 import donate from "../../public/QrCode.png";
+
 export default function Feedback() {
   const [open, setOpen] = React.useState(false);
 
   const handleClick = (e) => {
     e.preventDefault();
-    open === false ? setOpen(true): setOpen(false);
+    open === false ? setOpen(true) : setOpen(false);
   };
 
   return (
@@ -22,24 +22,10 @@ export default function Feedback() {
         Donate ❤️
       </Button>
       <Collapse in={open}>
-        <Alert
-          action={
-            <IconButton
-              aria-label="close"
-              color="inherit"
-              size="small"
-              onClick={() => {
-                setOpen(false);
-              }}
-            >
-              <CloseIcon fontSize="inherit" />
-            </IconButton>
-          }
-          sx={{ mb: 2 }}
-        >
-          Donated thank you
-        </Alert>
-        <img src={donate} />
+        <Box sx={{ p: 1 }} bgcolor={"background.paper"}>
+          <Alert severity="info">Scan and Pay using any UPI app</Alert>
+          <img src={donate} width="100%" />
+        </Box>
       </Collapse>
     </Box>
   );

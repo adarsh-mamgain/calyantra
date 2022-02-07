@@ -8,7 +8,7 @@ import Breadcrumbs from "@mui/material/Breadcrumbs";
 export default function Crumbs() {
   return (
     <Box>
-      <Breadcrumbs sx={{ py: 1, my: 3 }} aria-label="breadcrumb">
+      <Breadcrumbs sx={{ py: 3 }} aria-label="breadcrumb">
         <Link
           underline="hover"
           sx={{ display: "flex", alignItems: "center" }}

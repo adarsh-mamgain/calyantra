@@ -30,44 +30,47 @@ export function TextSHA() {
     }
   };
   return (
-    <Box sx={{ px: 20, m: 3 }}>
-      <Crumbs />
-      <Typography variant="h2">SHA Hash Calculator</Typography>
-      <Grid container justifyContent="center" spacing={1}>
-        <Grid item xs={12} sm={9}>
-          <Box>
-            <TextField
-              hiddenLabel
-              required
-              multiline
-              rows={4}
-              size="small"
-              sx={{ width: "100%" }}
-              variant="filled"
-              id="filled-message"
-              onChange={(e) => changeText(e)}
-            />
-            <TextField
-              hiddenLabel
-              multiline
-              rows={4}
-              size="small"
-              sx={{ width: "100%" }}
-              variant="filled"
-              id="readonly-message"
-              value={text}
-              InputProps={{
-                readOnly: true,
-              }}
-            />
-          </Box>
+    <Box bgcolor={"background.default"}>
+      <Box sx={{ px: 20 }}>
+        <Crumbs />
+        <Typography color={"text.primary"} variant="h1">
+          SHA Hash Calculator
+        </Typography>
+        <Grid container justifyContent="center" spacing={1}>
+          <Grid item xs={12} sm={9}>
+            <Box>
+              <TextField
+                hiddenLabel
+                required
+                multiline
+                rows={4}
+                size="small"
+                sx={{ width: "100%" }}
+                variant="filled"
+                id="filled-message"
+                onChange={(e) => changeText(e)}
+              />
+              <TextField
+                hiddenLabel
+                multiline
+                rows={4}
+                size="small"
+                sx={{ width: "100%" }}
+                variant="filled"
+                id="readonly-message"
+                value={text}
+                InputProps={{
+                  readOnly: true,
+                }}
+              />
+            </Box>
+          </Grid>
+          <Grid item xs={0} sm={3}>
+            <Feedback />
+            {/* <Donate /> */}
+          </Grid>
         </Grid>
-        <Grid item xs={0} sm={3}>
-          <Feedback />
-          {/* <Donate /> */}
-          <Typography variant="h1">ADS</Typography>
-        </Grid>
-      </Grid>
+      </Box>
     </Box>
   );
 }
@@ -117,39 +120,46 @@ export function FileSHA() {
     reader.readAsBinaryString(file);
   };
   return (
-    <Box sx={{ px: 20, m: 3 }}>
-      <Crumbs />
-      <Typography variant="h2">SHA Hash Calculator</Typography>
-      <Grid container justifyContent="center" spacing={1}>
-        <Grid item xs={12} sm={9}>
-          <Box>
+    <Box bgcolor={"background.default"}>
+      <Box sx={{ px: 20 }}>
+        <Crumbs />
+        <Typography color={"text.primary"} variant="h1">
+          SHA Hash Calculator
+        </Typography>
+        <Grid container justifyContent="center" spacing={1}>
+          <Grid item xs={12} sm={9}>
             <Box>
-              <Button variant="contained" component="label" sx={{ height: 100, width: 100 + "%" }}>
-                Upload File
-                <input type="file" onChange={(e) => changeText(e)} hidden />
-              </Button>
+              <Box>
+                <Button
+                  variant="contained"
+                  component="label"
+                  sx={{ height: 100, width: 100 + "%" }}
+                >
+                  Upload File
+                  <input type="file" onChange={(e) => changeText(e)} hidden />
+                </Button>
+              </Box>
+              <TextField
+                hiddenLabel
+                multiline
+                rows={4}
+                size="small"
+                sx={{ width: "100%" }}
+                variant="filled"
+                id="readonly-message"
+                value={text}
+                InputProps={{
+                  readOnly: true,
+                }}
+              />
             </Box>
-            <TextField
-              hiddenLabel
-              multiline
-              rows={4}
-              size="small"
-              sx={{ width: "100%" }}
-              variant="filled"
-              id="readonly-message"
-              value={text}
-              InputProps={{
-                readOnly: true,
-              }}
-            />
-          </Box>
+          </Grid>
+          <Grid item xs={0} sm={3}>
+            <Feedback />
+            {/* <Donate /> */}
+          </Grid>
         </Grid>
-        <Grid item xs={0} sm={3}>
-          <Feedback />
-          {/* <Donate /> */}
-          <Typography variant="h1">ADS</Typography>
-        </Grid>
-      </Grid>
+      </Box>
     </Box>
   );
 }

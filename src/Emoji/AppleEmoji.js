@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Grid, Button, Tooltip } from "@mui/material";
 import Feedback from "../Components/Feedback";
 // import Donate from "../Components/Donate";
-import Crumbs from "../Components/Crumbs";;
+import Crumbs from "../Components/Crumbs";
 
 const emoticons = [
   { emoji: "😀" },
@@ -1818,38 +1818,44 @@ export default function AppleEmoji() {
     copy[index] = true;
     setOpen(copy);
     setTimeout(() => {
-      let original = [...opened]
+      let original = [...opened];
       original[index] = false;
       setOpen(original);
     }, 1000);
   };
 
   return (
-    <Box sx={{ px: 20, m: 3 }}>
-      <Crumbs />
-      <Grid container justifyContent="center">
-        {emoticons.map(
-          (options, index) => (
-            opened.push(false),
-            (
-              <div>
-                <Tooltip
-                  open={opened[index]}
-                  disableFocusListener
-                  disableHoverListener
-                  disableTouchListener
-                  placement="top"
-                  title="Copied!"
-                >
-                  <Button key={index} sx={{ fontSize: 40 }} onClick={(e) => copyEmote(e, index)}>
-                    {options.emoji}
-                  </Button>
-                </Tooltip>
-              </div>
+    <Box bgcolor={"background.default"}>
+      <Box sx={{ px: 20 }}>
+        <Crumbs />
+        <Grid container justifyContent="center">
+          {emoticons.map(
+            (options, index) => (
+              opened.push(false),
+              (
+                <div>
+                  <Tooltip
+                    open={opened[index]}
+                    disableFocusListener
+                    disableHoverListener
+                    disableTouchListener
+                    placement="top"
+                    title="Copied!"
+                  >
+                    <Button
+                      key={index}
+                      sx={{ fontSize: 40 }}
+                      onClick={(e) => copyEmote(e, index)}
+                    >
+                      {options.emoji}
+                    </Button>
+                  </Tooltip>
+                </div>
+              )
             )
-          )
-        )}
-      </Grid>
+          )}
+        </Grid>
+      </Box>
     </Box>
   );
 }
