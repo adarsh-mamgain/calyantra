@@ -14,7 +14,7 @@ import AppleEmoji from "./Emoji/AppleEmoji";
 import EmojiHome from "./Emoji/Emoji";
 import TextEmoji from "./Emoji/TextEmoji";
 import HashHome from "./Hash/Hash";
-import { FileSHA, TextSHA } from "./Hash/SHA";
+import Hashing from "./Hash/SHA";
 import Home from "./Home";
 
 export default function Router() {
@@ -48,18 +48,12 @@ export default function Router() {
           path: "hash",
           children: [
             { path: "", element: <HashHome /> },
-            { path: "text-md5", element: <TextSHA /> },
-            { path: "text-sha1", element: <TextSHA /> },
-            { path: "text-sha224", element: <TextSHA /> },
-            { path: "text-sha256", element: <TextSHA /> },
-            { path: "text-sha384", element: <TextSHA /> },
-            { path: "text-sha512", element: <TextSHA /> },
-            { path: "file-md5", element: <FileSHA /> },
-            { path: "file-sha1", element: <FileSHA /> },
-            { path: "file-sha224", element: <FileSHA /> },
-            { path: "file-sha256", element: <FileSHA /> },
-            { path: "file-sha384", element: <FileSHA /> },
-            { path: "file-sha512", element: <FileSHA /> },
+            { path: "md5", element: <Hashing /> },
+            { path: "sha1", element: <Hashing /> },
+            { path: "sha224", element: <Hashing /> },
+            { path: "sha256", element: <Hashing /> },
+            { path: "sha384", element: <Hashing /> },
+            { path: "sha512", element: <Hashing /> },
           ],
         },
         {
