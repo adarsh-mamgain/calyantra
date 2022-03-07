@@ -26,8 +26,8 @@ export default function Navigation(props) {
   };
   return (
     <Box>
-      <AppBar sx={{ px: 20 }} position="static">
-        <Toolbar sx={{ flexWrap: "wrap" }}>
+      <AppBar sx={{ px: { xs: 2, sm: 10, md: 20 } }} position="static">
+        <Toolbar sx={{ flexWrap: "wrap", padding: { xs: 0 } }}>
           <Link href="/" underline="none" sx={{ flexGrow: 1 }}>
             <Badge color={"secondary"} badgeContent={"BETA"}>
               <Typography color={"text.primary"} sx={{ fontSize: 20 }}>
@@ -35,7 +35,7 @@ export default function Navigation(props) {
               </Typography>
             </Badge>
           </Link>
-          <Box sx={{ flexGrow: 1 }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}>
             <Button
               sx={{ color: "text.primary" }}
               id="basic-button"
@@ -115,7 +115,6 @@ export default function Navigation(props) {
               onClick={props.getColorMode.toggleColorMode}
               aria-label="Toggle color theme"
             >
-              {/* {localStorage.setItem("mode", props.getTheme.palette.mode)} */}
               {props.getTheme.palette.mode === "dark"
                 ? (localStorage.setItem("mode", "dark"), (<Brightness7Icon />))
                 : (localStorage.setItem("mode", "light"),

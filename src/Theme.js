@@ -24,11 +24,14 @@ export const getDesignTokens = (mode) => ({
         }),
   },
   typography: {
-    h1: { fontSize: "4rem" },
-    h2: { fontSize: "3rem" },
-    h3: { fontSize: "2.34rem" },
-    h4: { fontSize: "2rem" },
-    h5: { fontSize: "1.66rem" },
-    h6: { fontSize: "1.34rem" },
+    h1: { fontSize: "clamp(2.625rem, 1.2857rem + 3.5714vw, 4rem)" },
+    h2: { fontSize: "clamp(1.5rem, 0.9643rem + 1.4286vw, 2.25rem)" },
+    h3: { fontSize: "2.25rem" },
+    h4: { fontSize: "1.75rem" },
+    h5: { fontSize: "1.5rem" },
+    h6: { fontSize: "1.25rem" },
+  },
+  tooltip: {
+    container: { background: "#ff0000" },
   },
 });

@@ -15,8 +15,10 @@ import {
   TableCell,
 } from "@mui/material";
 import Feedback from "../Components/Feedback";
-import Donate from "../Components/Donate";
-import Crumbs from "../Components/Crumbs";
+import GetHelmet from "../Components/GetHelmet";
+import { useLocation } from "react-router-dom";
+import GetTimeline from "../Components/GetTimeline";
+import GetRating from "../Components/GetRating";
 
 const gradesList = [
   {
@@ -54,7 +56,7 @@ const gradesList = [
 ];
 
 export default function GPA() {
-  const n = 5,
+  const n = 10,
     m = 3;
   var count = 0;
   var [result, setResult] = React.useState(["Result"]);
@@ -87,24 +89,56 @@ export default function GPA() {
     setResult(gpa.toFixed(2));
   };
 
+  const steps = [
+    "Input the course data",
+    "Calculate the GPA",
+    "Copy and share the result",
+  ];
+
   return (
     <Box bgcolor={"background.default"}>
-      <Box sx={{ px: 20 }}>
-        <Crumbs />
-        <Typography color={"text.primary"} variant="h1">
-          GPA Calculator
-        </Typography>
-        <Grid container justifyContent="center" spacing={1}>
-          <Grid item xs={12} lg={9}>
+      <Box sx={{ px: { xs: 2, sm: 10, md: 20 }, py: 2 }}>
+        <GetHelmet
+          title="GPA calculator | Calyantra.com"
+          description="Calculate your GPA, Simple Interest and Compound Interest."
+          url={useLocation().pathname}
+        />
+        <Box>
+          <Typography align="center" color={"text.primary"} variant="h1">
+            GPA Calculator
+          </Typography>
+          <Typography
+            align="center"
+            color={"text.secondary"}
+            variant="body1"
+            sx={{ mb: 3 }}
+          >
+            Calculate your GPA and share link with friends
+          </Typography>
+        </Box>
+        <Grid
+          container
+          direction={"row"}
+          justifyContent={"center"}
+          alignItems={"center"}
+          width={{ xs: "100%", sm: "max-content" }}
+          margin={"auto"}
+        >
+          <Grid item xs={12}>
             <TableContainer
               component={Paper}
               elevation={3}
-              sx={{ width: "max-content" }}
+              sx={{ width: "100%" }}
             >
               <Table aria-label="GPA calculating table">
                 <TableHead>
                   <TableRow>
-                    <TableCell>Sr.</TableCell>
+                    <TableCell
+                      align="right"
+                      sx={{ display: { xs: "none", sm: "table-cell" } }}
+                    >
+                      Sr.
+                    </TableCell>
                     <TableCell>Course</TableCell>
                     <TableCell>Credits</TableCell>
                     <TableCell>Grades</TableCell>
@@ -118,6 +152,7 @@ export default function GPA() {
                         component="th"
                         scope="row"
                         align="right"
+                        sx={{ display: { xs: "none", sm: "table-cell" } }}
                       >
                         {(count += 1)}
                       </TableCell>
@@ -125,7 +160,7 @@ export default function GPA() {
                         <TextField
                           hiddenLabel
                           required
-                          sx={{ width: 200 }}
+                          sx={{ width: { xs: 100, sm: 200 } }}
                           size="small"
                           variant="filled"
                           // key={1}
@@ -144,13 +179,14 @@ export default function GPA() {
                           onChange={(e) => handleChange(rowIndex, 1, e)}
                           type="number"
                           id="filled-credit"
+                          inputProps={{ min: 0 }}
                         />
                       </TableCell>
                       <TableCell>
                         <TextField
                           hiddenLabel
                           required
-                          sx={{ width: 90 }}
+                          sx={{ width: 100 }}
                           size="small"
                           variant="filled"
                           // key={3}
@@ -173,16 +209,15 @@ export default function GPA() {
                     <TableCell colSpan={2} align="right">
                       <Button
                         variant="contained"
-                        align="right"
                         onClick={gpaCalculate}
                       >
                         Calculate
                       </Button>
                     </TableCell>
-                    <TableCell colSpan={2} align="right">
+                    <TableCell colSpan={2}>
                       <TextField
                         hiddenLabel
-                        sx={{ width: "100%" }}
+                        sx={{ width: { xs: 100, sm: "100%" } }}
                         size="small"
                         variant="filled"
                         value={result}
@@ -197,11 +232,10 @@ export default function GPA() {
               </Table>
             </TableContainer>
           </Grid>
-          <Grid item xs={12} lg={3}>
-            <Feedback />
-            {/* <Donate /> */}
-          </Grid>
         </Grid>
+        <GetTimeline getSteps={steps} />
+        <GetRating />
+        <Feedback />
       </Box>
     </Box>
   );

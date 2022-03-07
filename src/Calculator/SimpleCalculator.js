@@ -14,8 +14,10 @@ import {
   TableCell,
 } from "@mui/material";
 import Feedback from "../Components/Feedback";
-// import Donate from "../Components/Donate";
-import Crumbs from "../Components/Crumbs";
+import { useLocation } from "react-router-dom";
+import GetHelmet from "../Components/GetHelmet";
+import GetTimeline from "../Components/GetTimeline";
+import GetRating from "../Components/GetRating";
 
 export default function SimpleCalculator() {
   const btnValues = [
@@ -132,15 +134,41 @@ export default function SimpleCalculator() {
     });
   };
 
+  const steps = [
+    "Input the data",
+    "Calculate the result",
+  ];
+
   return (
     <Box bgcolor={"background.default"}>
-      <Box sx={{ px: 20 }}>
-        <Crumbs />
-        <Typography color={"text.primary"} variant="h1">
-          Simple Calculator
-        </Typography>
-        <Grid container justifyContent="center" spacing={1}>
-          <Grid item xs={12} lg={9}>
+      <Box sx={{ px: { xs: 2, sm: 10, md: 20 }, py: 2 }}>
+        <GetHelmet
+          title="Simple calculator | Calyantra.com"
+          description="Calculate your GPA, Simple Interest and Compound Interest."
+          url={useLocation().pathname}
+        />
+        <Box>
+          <Typography align="center" color={"text.primary"} variant="h1">
+            Simple Calculator
+          </Typography>
+          <Typography
+            align="center"
+            color={"text.secondary"}
+            variant="body1"
+            sx={{ mb: 3 }}
+          >
+            A simple normal calculator
+          </Typography>
+        </Box>
+        <Grid
+          container
+          direction={"row"}
+          justifyContent="center"
+          alignItems={"center"}
+          width={{ xs: "max-content" }}
+          margin={"auto"}
+        >
+          <Grid item xs={12}>
             <TableContainer
               component={Paper}
               elevation={3}
@@ -166,7 +194,7 @@ export default function SimpleCalculator() {
                 </TableHead>
                 <TableBody>
                   <TableRow>
-                    <TableCell>
+                    <TableCell sx={{ padding: {xs: 0.5, sm: 2}}}>
                       <Button
                         variant="contained"
                         value={"C"}
@@ -175,7 +203,7 @@ export default function SimpleCalculator() {
                         C
                       </Button>
                     </TableCell>
-                    <TableCell>
+                    <TableCell sx={{ padding: {xs: 0.5, sm: 2}}}>
                       <Button
                         variant="contained"
                         value={"+-"}
@@ -184,7 +212,7 @@ export default function SimpleCalculator() {
                         +-
                       </Button>
                     </TableCell>
-                    <TableCell>
+                    <TableCell sx={{ padding: {xs: 0.5, sm: 2}}}>
                       <Button
                         variant="contained"
                         value={"%"}
@@ -193,7 +221,7 @@ export default function SimpleCalculator() {
                         %
                       </Button>
                     </TableCell>
-                    <TableCell>
+                    <TableCell sx={{ padding: {xs: 0.5, sm: 2}}}>
                       <Button
                         variant="contained"
                         value={"/"}
@@ -204,7 +232,7 @@ export default function SimpleCalculator() {
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell>
+                    <TableCell sx={{ padding: {xs: 0.5, sm: 2}}}>
                       <Button
                         variant="contained"
                         value={"7"}
@@ -213,7 +241,7 @@ export default function SimpleCalculator() {
                         7
                       </Button>
                     </TableCell>
-                    <TableCell>
+                    <TableCell sx={{ padding: {xs: 0.5, sm: 2}}}>
                       <Button
                         variant="contained"
                         value={"8"}
@@ -222,7 +250,7 @@ export default function SimpleCalculator() {
                         8
                       </Button>
                     </TableCell>
-                    <TableCell>
+                    <TableCell sx={{ padding: {xs: 0.5, sm: 2}}}>
                       <Button
                         variant="contained"
                         value={"9"}
@@ -231,7 +259,7 @@ export default function SimpleCalculator() {
                         9
                       </Button>
                     </TableCell>
-                    <TableCell>
+                    <TableCell sx={{ padding: {xs: 0.5, sm: 2}}}>
                       <Button
                         variant="contained"
                         value={"x"}
@@ -242,7 +270,7 @@ export default function SimpleCalculator() {
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell>
+                    <TableCell sx={{ padding: {xs: 0.5, sm: 2}}}>
                       <Button
                         variant="contained"
                         value={"4"}
@@ -251,7 +279,7 @@ export default function SimpleCalculator() {
                         4
                       </Button>
                     </TableCell>
-                    <TableCell>
+                    <TableCell sx={{ padding: {xs: 0.5, sm: 2}}}>
                       <Button
                         variant="contained"
                         value={"5"}
@@ -260,7 +288,7 @@ export default function SimpleCalculator() {
                         5
                       </Button>
                     </TableCell>
-                    <TableCell>
+                    <TableCell sx={{ padding: {xs: 0.5, sm: 2}}}>
                       <Button
                         variant="contained"
                         value={"6"}
@@ -269,7 +297,7 @@ export default function SimpleCalculator() {
                         6
                       </Button>
                     </TableCell>
-                    <TableCell>
+                    <TableCell sx={{ padding: {xs: 0.5, sm: 2}}}>
                       <Button
                         variant="contained"
                         value={"-"}
@@ -280,7 +308,7 @@ export default function SimpleCalculator() {
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell>
+                    <TableCell sx={{ padding: {xs: 0.5, sm: 2}}}>
                       <Button
                         variant="contained"
                         value={"1"}
@@ -289,7 +317,7 @@ export default function SimpleCalculator() {
                         1
                       </Button>
                     </TableCell>
-                    <TableCell>
+                    <TableCell sx={{ padding: {xs: 0.5, sm: 2}}}>
                       <Button
                         variant="contained"
                         value={"2"}
@@ -298,7 +326,7 @@ export default function SimpleCalculator() {
                         2
                       </Button>
                     </TableCell>
-                    <TableCell>
+                    <TableCell sx={{ padding: {xs: 0.5, sm: 2}}}>
                       <Button
                         variant="contained"
                         value={"3"}
@@ -307,7 +335,7 @@ export default function SimpleCalculator() {
                         3
                       </Button>
                     </TableCell>
-                    <TableCell>
+                    <TableCell sx={{ padding: {xs: 0.5, sm: 2}}}>
                       <Button
                         variant="contained"
                         value={"+"}
@@ -318,7 +346,7 @@ export default function SimpleCalculator() {
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell>
+                    <TableCell sx={{ padding: {xs: 0.5, sm: 2}}}>
                       <Button
                         variant="contained"
                         value={"0"}
@@ -327,7 +355,7 @@ export default function SimpleCalculator() {
                         0
                       </Button>
                     </TableCell>
-                    <TableCell>
+                    <TableCell sx={{ padding: {xs: 0.5, sm: 2}}}>
                       <Button
                         variant="contained"
                         value={"."}
@@ -336,7 +364,7 @@ export default function SimpleCalculator() {
                         .
                       </Button>
                     </TableCell>
-                    <TableCell colSpan={2}>
+                    <TableCell sx={{ padding: {xs: 0.5, sm: 2}}} colSpan={2}>
                       <Button
                         variant="contained"
                         value={"="}
@@ -351,11 +379,10 @@ export default function SimpleCalculator() {
               </Table>
             </TableContainer>
           </Grid>
-          <Grid item xs={12} lg={3}>
-            <Feedback />
-            {/* <Donate /> */}
-          </Grid>
         </Grid>
+        <GetTimeline getSteps={steps} />
+        <GetRating />
+        <Feedback />
       </Box>
     </Box>
   );

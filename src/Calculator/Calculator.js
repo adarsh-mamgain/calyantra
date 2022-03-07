@@ -1,66 +1,31 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
-import { Helmet } from "react-helmet";
+import GetHelmet from "../Components/GetHelmet";
 
 export default function CalculatorHome() {
   return (
     <Box bgcolor={"background.default"}>
       <Box sx={{ px: 20 }}>
-        <Helmet>
-          <title>Online calculators | Mangya.tech</title>
-          <meta name="title" content="Online calculators | Mangya.tech" />
-          <meta
-            name="description"
-            content="Calculate your GPAs, Interest, BMI."
-          />
-
-          {/* Open Graph / Facebook */}
-          <meta property="og:type" content="website" />
-          <meta property="og:url" content="https://mangya.tech/calculator" />
-          <meta
-            property="og:title"
-            content="Online calculators | Mangya.tech"
-          />
-          <meta
-            property="og:description"
-            content="Calculate your GPAs, Interest, BMI."
-          />
-          <meta
-            property="og:image"
-            content="https://mangya.tech/illustration.svg"
-          />
-
-          {/* Twitter */}
-          <meta property="twitter:card" content="summary_large_image" />
-          <meta
-            property="twitter:url"
-            content="https://mangya.tech/calculator"
-          />
-          <meta
-            property="twitter:title"
-            content="Online calculators | Mangya.tech"
-          />
-          <meta
-            property="twitter:description"
-            content="Calculate your GPAs, Interest, BMI."
-          />
-          <meta
-            property="twitter:image"
-            content="https://mangya.tech/illustration.svg"
-          />
-        </Helmet>
+        <GetHelmet
+          title="Online calculators | Calyantra.com"
+          description="Calculate your GPA, Simple Interest and Compound Interest."
+          url={useLocation().pathname}
+        />
+        <Typography align="center" color={"text.primary"} variant="h1">
+          Financial and Mathematical calculators
+        </Typography>
         <Link underline="none" to="gpa">
-          <Typography variant="h2">GPA</Typography>
+          <Typography>GPA</Typography>
         </Link>
         <Link underline="none" to="simple-interest">
-          <Typography variant="h2">Simple Interest</Typography>
+          <Typography>Simple Interest</Typography>
         </Link>
         <Link underline="none" to="compound-interest">
-          <Typography variant="h2">Compound Interest</Typography>
+          <Typography>Compound Interest</Typography>
         </Link>
         <Link underline="none" to="simple-calculator">
-          <Typography variant="h2">Simple Calculator</Typography>
+          <Typography>Simple Calculator</Typography>
         </Link>
       </Box>
     </Box>
