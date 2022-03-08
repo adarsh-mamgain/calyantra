@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography, Stack, Rating } from "@mui/material";
 import { useLocation } from "react-router";
-import database from "../database";
+import database from "./Database";
 import { ref, get, update, increment, child, onValue } from "firebase/database";
 import { getAuth, signInAnonymously, onAuthStateChanged } from "firebase/auth";
 

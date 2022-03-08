@@ -10,12 +10,13 @@ import {
   Table,
   TableBody,
   TableCell,
-  Slider,
 } from "@mui/material";
 import Feedback from "../Components/Feedback";
-// import Donate from "../Components/Donate";
-import Crumbs from "../Components/Crumbs";
 import { ResponsivePie } from "@nivo/pie";
+import GetHelmet from "../Components/GetHelmet";
+import { useLocation } from "react-router-dom";
+import GetTimeline from "../Components/GetTimeline";
+import GetRating from "../Components/GetRating";
 
 export default function SimpleInterest() {
   var [calc, setCalc] = React.useState({
@@ -80,15 +81,38 @@ export default function SimpleInterest() {
     console.log(calc);
   };
 
+  const steps = ["Input the data", "Calculate Simple Interest"];
+
   return (
     <Box bgcolor={"background.default"}>
-      <Box sx={{ px: 20 }}>
-        <Crumbs />
-        <Typography color={"text.primary"} variant="h1">
-          Simple Interest Calculator
-        </Typography>
-        <Grid container justifyContent="center" spacing={1}>
-          <Grid item xs={12} sm={9}>
+      <Box sx={{ px: { xs: 2, sm: 10, md: 20 }, py: 2 }}>
+        <GetHelmet
+          title="Simple Interest calculator | Calyantra.com"
+          description="Calculate your GPA, Simple Interest and Compound Interest."
+          url={useLocation().pathname}
+        />
+        <Box>
+          <Typography align="center" color={"text.primary"} variant="h1">
+            Simple Interest Calculator
+          </Typography>
+          <Typography
+            align="center"
+            color={"text.secondary"}
+            variant="body1"
+            sx={{ mb: 3 }}
+          >
+            Calculate your GPA and share link with friends
+          </Typography>
+        </Box>
+        <Grid
+          container
+          direction={"row"}
+          justifyContent="center"
+          alignItems={"center"}
+          width={{ xs: "100%", sm: "max-content" }}
+          margin={"auto"}
+        >
+          <Grid item xs={12}>
             <TableContainer
               component={Paper}
               elevation={3}
@@ -109,6 +133,7 @@ export default function SimpleInterest() {
                         onChange={(e) => handlePrincipal(e)}
                         type="number"
                         id="filled-principal-amount"
+                        inputProps={{ min: 0 }}
                       />
                     </TableCell>
                     <TableCell rowSpan={6}>
@@ -127,6 +152,16 @@ export default function SimpleInterest() {
                           }}
                           enableArcLinkLabels={false}
                           arcLabel="id"
+                          theme={{
+                            tooltip: {
+                              container: {
+                                background:
+                                  localStorage.getItem("mode") === "dark"
+                                    ? "#333333"
+                                    : "#ffffff",
+                              },
+                            },
+                          }}
                         />
                       </Box>
                     </TableCell>
@@ -144,6 +179,7 @@ export default function SimpleInterest() {
                         onChange={(e) => handleInterest(e)}
                         type="number"
                         id="filled-interest"
+                        inputProps={{ min: 0 }}
                       />
                     </TableCell>
                   </TableRow>
@@ -160,6 +196,7 @@ export default function SimpleInterest() {
                         onChange={(e) => handleTime(e)}
                         type="number"
                         id="filled-time"
+                        inputProps={{ min: 0 }}
                       />
                     </TableCell>
                   </TableRow>
@@ -197,11 +234,10 @@ export default function SimpleInterest() {
               </Table>
             </TableContainer>
           </Grid>
-          <Grid item xs={0} sm={3}>
-            <Feedback />
-            {/* <Donate /> */}
-          </Grid>
         </Grid>
+        <GetTimeline getSteps={steps} />
+        <GetRating />
+        <Feedback />
       </Box>
     </Box>
   );

@@ -13,7 +13,7 @@ import SendIcon from "@mui/icons-material/Send";
 import { useLocation } from "react-router";
 import { getAuth, onAuthStateChanged, signInAnonymously } from "firebase/auth";
 import { ref, update } from "firebase/database";
-import database from "../database";
+import database from "./Database";
 
 const subjectList = [
   {
