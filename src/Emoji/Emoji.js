@@ -6,7 +6,7 @@ import GetHelmet from "../Components/GetHelmet";
 export default function EmojiHome() {
   return (
     <Box bgcolor={"background.default"}>
-      <Box sx={{ px: 20 }}>
+      <Box sx={{ px: { xs: 2, sm: 10, md: 20 }, py: 2 }}>
         <GetHelmet
           title="Online Emoji 😁😂🥺 | Calyantra.com"
           description="Get all Apple and text based emoticons at one place."

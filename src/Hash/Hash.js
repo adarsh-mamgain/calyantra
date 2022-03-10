@@ -6,7 +6,7 @@ import GetHelmet from "../Components/GetHelmet";
 export default function HashHome() {
   return (
     <Box bgcolor={"background.default"}>
-      <Box sx={{ px: 20 }}>
+      <Box sx={{ px: { xs: 2, sm: 10, md: 20 }, py: 2 }}>
         <GetHelmet
           title="Online Hashing | Calyantra.com"
           description="Hash 🔐 your text or files 🗂 to MD5, SHA1, SHA224, SHA256, SHA384 and SHA512."

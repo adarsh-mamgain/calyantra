@@ -128,7 +128,6 @@ export default function GPA() {
             <TableContainer
               component={Paper}
               elevation={3}
-              sx={{ width: "100%" }}
             >
               <Table aria-label="GPA calculating table">
                 <TableHead>

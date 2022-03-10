@@ -1,7 +1,6 @@
 import React from "react";
 import { Box, Grid, Button, Tooltip, Typography } from "@mui/material";
 import Feedback from "../Components/Feedback";
-// import Donate from "../Components/Donate";
 import GetHelmet from "../Components/GetHelmet";
 import { useLocation } from "react-router-dom";
 import GetTimeline from "../Components/GetTimeline";
