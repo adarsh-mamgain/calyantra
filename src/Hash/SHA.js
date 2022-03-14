@@ -9,12 +9,13 @@ import {
   // Divider,
   Stack,
 } from "@mui/material";
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { useLocation } from "react-router-dom";
 import { MD5, SHA1, SHA224, SHA256, SHA384, SHA512 } from "crypto-js";
 import GetRating from "../Components/GetRating";
 import GetTimeline from "../Components/GetTimeline";
 import GetHelmet from "../Components/GetHelmet";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 
 export default function Hashing() {
   const type = useLocation();
@@ -187,7 +188,7 @@ export default function Hashing() {
               <Typography color={"text.primary"}>OUTPUT:</Typography>
               <Button
                 variant="contained"
-                startIcon={<ContentCopyIcon />}
+                startIcon={<FontAwesomeIcon icon={solid("copy")} />}
                 onClick={copyHash}
               >
                 {copy ? "Copied" : "Copy"}

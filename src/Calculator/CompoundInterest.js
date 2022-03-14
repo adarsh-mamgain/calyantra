@@ -4,7 +4,6 @@ import {
   Typography,
   TextField,
   Grid,
-  Paper,
   TableContainer,
   TableRow,
   Table,
@@ -12,14 +11,16 @@ import {
   TableCell,
 } from "@mui/material";
 import Feedback from "../Components/Feedback";
-// import Donate from "../Components/Donate";
-import Crumbs from "../Components/Crumbs";
 import { ResponsivePie } from "@nivo/pie";
+import GetHelmet from "../Components/GetHelmet";
+import { useLocation } from "react-router-dom";
+import GetTimeline from "../Components/GetTimeline";
+import GetRating from "../Components/GetRating";
 
 export default function CompoundInterest() {
   var [calc, setCalc] = React.useState({
     principal: 100,
-    interest: 7,
+    rate: 7,
     time: 2,
     roi: 14.49,
     number: 1,
@@ -45,81 +46,120 @@ export default function CompoundInterest() {
     setCalc({
       ...calc,
       principal: Number(event.target.value),
-      roi: 111,
+      roi: Number(
+        event.target.value *
+          Math.pow(1 + calc.rate / calc.number / 100, calc.number * calc.time) -
+          event.target.value
+      ).toFixed(2),
       result: Number(
         event.target.value *
-          Math.pow(1 + calc.interest / calc.number, calc.number * calc.time)
-      ),
+          Math.pow(1 + calc.rate / calc.number / 100, calc.number * calc.time)
+      ).toFixed(2),
     });
-    console.log(calc);
   };
 
   const handleInterest = (event) => {
     setCalc({
       ...calc,
-      interest: Number(event.target.value),
-      roi: 222,
+      rate: Number(event.target.value),
+      roi: Number(
+        calc.principal *
+          Math.pow(
+            1 + event.target.value / calc.number / 100,
+            calc.number * calc.time
+          ) -
+          calc.principal
+      ).toFixed(2),
       result: Number(
         calc.principal *
           Math.pow(
-            1 + event.target.value / calc.number,
+            1 + event.target.value / calc.number / 100,
             calc.number * calc.time
           )
-      ),
+      ).toFixed(2),
     });
-    console.log(calc);
   };
 
   const handleTime = (event) => {
     setCalc({
       ...calc,
       time: Number(event.target.value),
-      roi: 444,
+      roi: Number(
+        calc.principal *
+          Math.pow(
+            1 + calc.rate / calc.number / 100,
+            calc.number * event.target.value
+          ) -
+          calc.principal
+      ).toFixed(2),
       result: Number(
         calc.principal *
           Math.pow(
-            1 + calc.interest / calc.number,
+            1 + calc.rate / calc.number / 100,
             calc.number * event.target.value
           )
-      ),
+      ).toFixed(2),
     });
-    console.log(calc);
   };
 
   const handleNumber = (event) => {
     setCalc({
       ...calc,
       number: Number(event.target.value),
-      roi: 333,
+      roi: Number(
+        calc.principal *
+          Math.pow(
+            1 + calc.rate / event.target.value / 100,
+            event.target.value * calc.time
+          ) -
+          calc.principal
+      ).toFixed(2),
       result: Number(
         calc.principal *
           Math.pow(
-            1 + calc.interest / event.target.value,
+            1 + calc.rate / event.target.value / 100,
             event.target.value * calc.time
           )
-      ),
+      ).toFixed(2),
     });
-    console.log(calc);
   };
+
+  const steps = ["Input the data", "Calculate Compound Interest"];
 
   return (
     <Box bgcolor={"background.default"}>
-      <Box sx={{ px: 20 }}>
-        <Crumbs />
-        <Typography color={"text.primary"} variant="h1">
-          Compound Interest Calculator
-        </Typography>
-        <Grid container justifyContent="center" spacing={1}>
-          <Grid item xs={12} sm={9}>
-            <TableContainer
-              component={Paper}
-              elevation={3}
-              sx={{ width: "max-content" }}
-            >
+      <Box sx={{ px: { xs: 2, sm: 10, md: 20 }, py: 2 }}>
+        <GetHelmet
+          title="Compound Interest calculator | Calyantra.com"
+          description="Calculate your GPA, Simple Interest and Compound Interest."
+          url={useLocation().pathname}
+        />
+        <Box>
+          <Typography align="center" color={"text.primary"} variant="h1">
+            Compound Interest Calculator
+          </Typography>
+          <Typography
+            align="center"
+            color={"text.secondary"}
+            variant="body1"
+            sx={{ mb: 3 }}
+          >
+            Calculate Compound Interest and share link with friends
+          </Typography>
+        </Box>
+        <Grid
+          container
+          direction={"row"}
+          justifyContent="center"
+          alignItems={"center"}
+          bgcolor={"background.paper"}
+        >
+          <Grid item xs={12} sm={12} md={6} lg={5}>
+            <TableContainer bgcolor={"background.paper"}>
               <Table aria-label="Compound Interest calculating table">
                 <TableBody>
                   <TableRow>
-                    <TableCell>Principal amount (P)</TableCell>
+                    <TableCell>Principal Amount (P)</TableCell>
                     <TableCell align="right">
                       <TextField
                         hiddenLabel
@@ -133,29 +173,9 @@ export default function CompoundInterest() {
                         id="filled-principal-amount"
                       />
                     </TableCell>
-                    <TableCell rowSpan={6}>
-                      <Box width={350} height={300}>
-                        <ResponsivePie
-                          data={pieData}
-                          colors={{ datum: "data.color" }}
-                          margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
-                          innerRadius={0.5}
-                          padAngle={0.7}
-                          cornerRadius={3}
-                          activeOuterRadiusOffset={8}
-                          borderWidth={1}
-                          borderColor={{
-                            from: "color",
-                            modifiers: [["darker", 0.2]],
-                          }}
-                          enableArcLinkLabels={false}
-                          arcLabel="id"
-                        />
-                      </Box>
-                    </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell>Rate of interest (r)</TableCell>
+                    <TableCell>Rate of Interest (r)</TableCell>
                     <TableCell align="right">
                       <TextField
                         hiddenLabel
@@ -163,7 +183,7 @@ export default function CompoundInterest() {
                         key="1"
                         size="small"
                         variant="filled"
-                        value={calc.interest}
+                        value={calc.rate}
                         onChange={(e) => handleInterest(e)}
                         type="number"
                         id="filled-interest"
@@ -171,7 +191,7 @@ export default function CompoundInterest() {
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell>Time period (t)</TableCell>
+                    <TableCell>Year (t)</TableCell>
                     <TableCell align="right">
                       <TextField
                         hiddenLabel
@@ -187,7 +207,7 @@ export default function CompoundInterest() {
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell>Compounds / Period (n)</TableCell>
+                    <TableCell>Compounds / Year (n)</TableCell>
                     <TableCell align="right">
                       <TextField
                         hiddenLabel
@@ -208,8 +228,17 @@ export default function CompoundInterest() {
                         Principal:
                       </Typography>
                     </TableCell>
-                    <TableCell>
-                      <Typography>{calc.principal}</Typography>
+                    <TableCell align="right">
+                      <TextField
+                        hiddenLabel
+                        size="small"
+                        variant="filled"
+                        value={calc.principal}
+                        id="filled-read-only-principal"
+                        InputProps={{
+                          readOnly: true,
+                        }}
+                      />
                     </TableCell>
                   </TableRow>
                   <TableRow>
@@ -218,8 +247,17 @@ export default function CompoundInterest() {
                         Interest:
                       </Typography>
                     </TableCell>
-                    <TableCell>
-                      <Typography>{calc.roi}</Typography>
+                    <TableCell align="right">
+                      <TextField
+                        hiddenLabel
+                        size="small"
+                        variant="filled"
+                        value={calc.roi}
+                        id="filled-read-only-roi"
+                        InputProps={{
+                          readOnly: true,
+                        }}
+                      />
                     </TableCell>
                   </TableRow>
                   <TableRow>
@@ -228,19 +266,65 @@ export default function CompoundInterest() {
                         Total return:
                       </Typography>
                     </TableCell>
-                    <TableCell>
-                      <Typography>{calc.result}</Typography>
+                    <TableCell align="right">
+                      <TextField
+                        hiddenLabel
+                        size="small"
+                        variant="filled"
+                        value={calc.result}
+                        id="filled-read-only-result"
+                        InputProps={{
+                          readOnly: true,
+                        }}
+                      />
                     </TableCell>
                   </TableRow>
                 </TableBody>
               </Table>
             </TableContainer>
           </Grid>
-          <Grid item xs={0} sm={3}>
-            <Feedback />
-            {/* <Donate /> */}
+          <Grid item xs={12} sm={12} md={6} lg={4}>
+            <Box height={300}>
+              <ResponsivePie
+                data={pieData}
+                margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
+                innerRadius={0.5}
+                padAngle={0.7}
+                cornerRadius={3}
+                activeOuterRadiusOffset={8}
+                borderWidth={1}
+                borderColor={{
+                  from: "color",
+                  modifiers: [["darker", 0.2]],
+                }}
+                enableArcLinkLabels={false}
+                arcLabel="id"
+                arcLabelsTextColor={
+                  localStorage.getItem("mode") === "dark"
+                    ? "#ffffff"
+                    : "#333333"
+                }
+                theme={{
+                  tooltip: {
+                    container: {
+                      background:
+                        localStorage.getItem("mode") === "dark"
+                          ? "#333333"
+                          : "#ffffff",
+                      color:
+                        localStorage.getItem("mode") === "dark"
+                          ? "#ffffff"
+                          : "#333333",
+                    },
+                  },
+                }}
+              />
+            </Box>
           </Grid>
         </Grid>
+        <GetTimeline getSteps={steps} />
+        <GetRating />
+        <Feedback />
       </Box>
     </Box>
   );

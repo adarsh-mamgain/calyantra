@@ -1,6 +1,7 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import {
+  Grid,
   Link,
   List,
   ListItemButton,
@@ -8,114 +9,74 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
-import EnhancedEncryptionIcon from "@mui/icons-material/EnhancedEncryption";
-import CalculateIcon from "@mui/icons-material/Calculate";
-import CodeIcon from "@mui/icons-material/Code";
-import SettingsIcon from "@mui/icons-material/Settings";
-import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
-import TextFormatIcon from "@mui/icons-material/TextFormat";
-import LoopIcon from "@mui/icons-material/Loop";
-import EmojiEmotionsIcon from "@mui/icons-material/EmojiEmotions";
+import pwa from "../public/pwa.svg";
+import security from "../public/security.svg";
+import in_no_time from "../public/in_no_time.svg";
+import share_link from "../public/share_link.svg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
+import ListButton from "./Components/ListButton";
 
 export default function Home() {
   return (
     <Box bgcolor={"background.default"}>
-      <Box sx={{ px: 20 }}>
-        <Typography color={"text.primary"} variant="h1">
-          Free online tools
-        </Typography>
+      <Box sx={{ px: { xs: 2, sm: 10, md: 20 }, py: 2 }}>
+        <Grid
+          container
+          direction={"row"}
+          justifyContent={"center"}
+          alignItems={"center"}
+          spacing={10}
+          padding={5}
+        >
+          <Grid item xs={12} sm={6}>
+            <Typography color={"text.primary"} variant="h1" fontWeight={500}>
+              Everyday tools online.
+            </Typography>
+            <Typography color={"text.secondary"} variant="body1">
+              We provide all tools online &amp; that too for free.
+            </Typography>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <img src={pwa} width="100%" height="100%" alt="pwa image" />
+          </Grid>
+        </Grid>
         <List
           sx={{
             display: "flex",
             flexWrap: "wrap",
+            justifyContent: "center",
+            alignItems: "center",
           }}
           component="nav"
           aria-labelledby="listed-tools"
         >
-          <ListItemButton
-            sx={{ width: "20%", m: 1, bgcolor: "background.paper" }}
-            component={Link}
-            href="/calculator"
-          >
-            <ListItemIcon>
-              <CalculateIcon />
-            </ListItemIcon>
-            <ListItemText
-              primary={
-                <Typography
-                  component={"span"}
-                  color={"text.primary"}
-                  variant="body1"
-                >
-                  Calculators
-                </Typography>
-              }
-              secondary="Caluclate academic, health, time and get perfect results"
-            />
-          </ListItemButton>
-          <ListItemButton
-            sx={{ width: "20%", m: 1, bgcolor: "background.paper" }}
-            component={Link}
+          <ListButton
+            primary={"Calculators"}
+            secondary={
+              "Caluclate academic, health, time and get perfect results"
+            }
+            href={"/calculator"}
+            icon={<FontAwesomeIcon icon={solid("calculator")} size={"lg"} />}
+          />
+          <ListButton
+            primary={"Conversion"}
+            secondary={"Convert every length from one to another"}
             href="/conversion"
-          >
-            <ListItemIcon>
-              <SettingsIcon />
-            </ListItemIcon>
-            <ListItemText
-              primary={
-                <Typography
-                  component={"span"}
-                  color={"text.primary"}
-                  variant="body1"
-                >
-                  Conversion
-                </Typography>
-              }
-              secondary="Convert every length from one to another"
-            />
-          </ListItemButton>
-          <ListItemButton
-            sx={{ width: "20%", m: 1, bgcolor: "background.paper" }}
-            component={Link}
+            icon={<FontAwesomeIcon icon={solid("gear")} size={"lg"} />}
+          />
+          <ListButton
+            primary={"Hashing"}
+            secondary={"Get a hash for your text and files"}
             href="/hash"
-          >
-            <ListItemIcon>
-              <EnhancedEncryptionIcon />
-            </ListItemIcon>
-            <ListItemText
-              primary={
-                <Typography
-                  component={"span"}
-                  color={"text.primary"}
-                  variant="body1"
-                >
-                  Hashing
-                </Typography>
-              }
-              secondary="Get a hash for your text and files"
-            />
-          </ListItemButton>
-          <ListItemButton
-            sx={{ width: "20%", m: 1, bgcolor: "background.paper" }}
-            component={Link}
+            icon={<FontAwesomeIcon icon={solid("lock")} size={"lg"} />}
+          />
+          <ListButton
+            primary={"Emojis"}
+            secondary={"Get all Apple and text based emoticons"}
             href="/emoji"
-          >
-            <ListItemIcon>
-              <EmojiEmotionsIcon />
-            </ListItemIcon>
-            <ListItemText
-              primary={
-                <Typography
-                  component={"span"}
-                  color={"text.primary"}
-                  variant="body1"
-                >
-                  Emojis
-                </Typography>
-              }
-              secondary="Get all Apple and text based emoticons"
-            />
-          </ListItemButton>
+            icon={<FontAwesomeIcon icon={solid("face-grin")} size={"lg"} />}
+          />
           {/* <ListItemButton component={Link} href="/generate">
           <ListItemIcon>
             <LoopIcon />
@@ -144,20 +105,51 @@ export default function Home() {
           <ListItemText primary="Code formatter" />
         </ListItemButton> */}
         </List>
-        <Typography color={"text.primary"} variant="h2" align="center">
-          About Us
-        </Typography>
-        <Typography color={"text.secondary"} variant="body1">
-          Free Tools! Yes, we provide all tools for free online and that
-          everything on the client side in your browser.
-        </Typography>
-        <Typography color={"text.secondary"} variant="body1">
-          Share your results and files by creating a short URI.{" "}
-        </Typography>
-        <Typography color={"text.secondary"} variant="body1">
-          All files and text are stored locally on your browser. And shared to
-          the server only when you opt to do so.
-        </Typography>
+        <Grid
+          container
+          direction={"row"}
+          justifyContent={"center"}
+          alignItems={"center"}
+          spacing={{ xs: 10, sm: 15 }}
+          padding={5}
+        >
+          <Grid item xs={12} sm={6} order={{ xs: 1 }}>
+            <img src={in_no_time} width="100%" height="100%" alt="pwa image" />
+          </Grid>
+          <Grid item xs={12} sm={6} order={{ xs: 2 }}>
+            <Typography color={"text.primary"} variant="h2">
+              Blazing process
+            </Typography>
+            <Typography color={"text.secondary"} variant="body1">
+              Get results within a few minutes, so you don't have to worry about
+              the last minute assingment due.
+            </Typography>
+          </Grid>
+          <Grid item xs={12} sm={6} order={{ xs: 4, sm: 3 }}>
+            <Typography color={"text.primary"} variant="h2">
+              Client side working
+            </Typography>
+            <Typography color={"text.secondary"} variant="body1">
+              All process happens inside your browser. No files are sent to
+              server until you've opted to share your link
+            </Typography>
+          </Grid>
+          <Grid item xs={12} sm={6} order={{ xs: 3, sm: 4 }}>
+            <img src={security} width="100%" height="100%" alt="pwa image" />
+          </Grid>
+          <Grid item xs={12} sm={6} order={{ xs: 5 }}>
+            <img src={share_link} width="100%" height="100%" alt="pwa image" />
+          </Grid>
+          <Grid item xs={12} sm={6} order={{ xs: 6 }}>
+            <Typography color={"text.primary"} variant="h2">
+              Share your result
+            </Typography>
+            <Typography color={"text.secondary"} variant="body1">
+              Don't keep your result to yourself. Generate a link, copy and
+              share your results.
+            </Typography>
+          </Grid>
+        </Grid>
       </Box>
     </Box>
   );

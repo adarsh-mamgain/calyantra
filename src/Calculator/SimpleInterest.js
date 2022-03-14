@@ -4,7 +4,6 @@ import {
   Typography,
   TextField,
   Grid,
-  Paper,
   TableContainer,
   TableRow,
   Table,
@@ -46,39 +45,42 @@ export default function SimpleInterest() {
     setCalc({
       ...calc,
       principal: Number(event.target.value),
-      roi: Number((event.target.value * calc.interest * calc.time) / 100),
+      roi: Number(
+        (event.target.value * calc.interest * calc.time) / 100
+      ).toFixed(2),
       result: Number(
         Number(event.target.value) +
           Number((event.target.value * calc.interest * calc.time) / 100)
-      ),
+      ).toFixed(2),
     });
-    console.log(calc);
   };
 
   const handleInterest = (event) => {
     setCalc({
       ...calc,
       interest: Number(event.target.value),
-      roi: Number((calc.principal * event.target.value * calc.time) / 100),
+      roi: Number(
+        (calc.principal * event.target.value * calc.time) / 100
+      ).toFixed(2),
       result: Number(
         calc.principal +
           Number((calc.principal * event.target.value * calc.time) / 100)
-      ),
+      ).toFixed(2),
     });
-    console.log(calc);
   };
 
   const handleTime = (event) => {
     setCalc({
       ...calc,
       time: Number(event.target.value),
-      roi: Number((calc.principal * calc.interest * event.target.value) / 100),
+      roi: Number(
+        (calc.principal * calc.interest * event.target.value) / 100
+      ).toFixed(2),
       result: Number(
         calc.principal +
           Number((calc.principal * calc.interest * event.target.value) / 100)
-      ),
+      ).toFixed(2),
     });
-    console.log(calc);
   };
 
   const steps = ["Input the data", "Calculate Simple Interest"];
@@ -101,7 +103,7 @@ export default function SimpleInterest() {
             variant="body1"
             sx={{ mb: 3 }}
           >
-            Calculate your GPA and share link with friends
+            Calculate Simple Interest and share link with friends
           </Typography>
         </Box>
         <Grid
@@ -109,19 +111,14 @@ export default function SimpleInterest() {
           direction={"row"}
           justifyContent="center"
           alignItems={"center"}
-          width={{ xs: "100%", sm: "max-content" }}
-          margin={"auto"}
+          bgcolor={"background.paper"}
         >
-          <Grid item xs={12}>
-            <TableContainer
-              component={Paper}
-              elevation={3}
-              sx={{ width: "max-content" }}
-            >
+          <Grid item xs={12} sm={12} md={6} lg={5}>
+            <TableContainer bgcolor={"background.paper"}>
               <Table aria-label="Simple Interest calculating table">
                 <TableBody>
                   <TableRow>
-                    <TableCell>Principal Amount</TableCell>
+                    <TableCell>Principal Amount (P)</TableCell>
                     <TableCell align="right">
                       <TextField
                         hiddenLabel
@@ -133,41 +130,11 @@ export default function SimpleInterest() {
                         onChange={(e) => handlePrincipal(e)}
                         type="number"
                         id="filled-principal-amount"
-                        inputProps={{ min: 0 }}
                       />
-                    </TableCell>
-                    <TableCell rowSpan={6}>
-                      <Box width={350} height={300}>
-                        <ResponsivePie
-                          data={pieData}
-                          margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
-                          innerRadius={0.5}
-                          padAngle={0.7}
-                          cornerRadius={3}
-                          activeOuterRadiusOffset={8}
-                          borderWidth={1}
-                          borderColor={{
-                            from: "color",
-                            modifiers: [["darker", 0.2]],
-                          }}
-                          enableArcLinkLabels={false}
-                          arcLabel="id"
-                          theme={{
-                            tooltip: {
-                              container: {
-                                background:
-                                  localStorage.getItem("mode") === "dark"
-                                    ? "#333333"
-                                    : "#ffffff",
-                              },
-                            },
-                          }}
-                        />
-                      </Box>
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell>Rate of Interest (p.a)</TableCell>
+                    <TableCell>Rate of Interest (r)</TableCell>
                     <TableCell align="right">
                       <TextField
                         hiddenLabel
@@ -179,12 +146,11 @@ export default function SimpleInterest() {
                         onChange={(e) => handleInterest(e)}
                         type="number"
                         id="filled-interest"
-                        inputProps={{ min: 0 }}
                       />
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell>Time period</TableCell>
+                    <TableCell>Year (t)</TableCell>
                     <TableCell align="right">
                       <TextField
                         hiddenLabel
@@ -196,7 +162,6 @@ export default function SimpleInterest() {
                         onChange={(e) => handleTime(e)}
                         type="number"
                         id="filled-time"
-                        inputProps={{ min: 0 }}
                       />
                     </TableCell>
                   </TableRow>
@@ -206,8 +171,17 @@ export default function SimpleInterest() {
                         Principal:
                       </Typography>
                     </TableCell>
-                    <TableCell>
-                      <Typography>{calc.principal}</Typography>
+                    <TableCell align="right">
+                      <TextField
+                        hiddenLabel
+                        size="small"
+                        variant="filled"
+                        value={calc.principal}
+                        id="filled-read-only-principal"
+                        InputProps={{
+                          readOnly: true,
+                        }}
+                      />
                     </TableCell>
                   </TableRow>
                   <TableRow>
@@ -216,8 +190,17 @@ export default function SimpleInterest() {
                         Interest:
                       </Typography>
                     </TableCell>
-                    <TableCell>
-                      <Typography>{calc.roi}</Typography>
+                    <TableCell align="right">
+                      <TextField
+                        hiddenLabel
+                        size="small"
+                        variant="filled"
+                        value={calc.roi}
+                        id="filled-read-only-roi"
+                        InputProps={{
+                          readOnly: true,
+                        }}
+                      />
                     </TableCell>
                   </TableRow>
                   <TableRow>
@@ -226,13 +209,60 @@ export default function SimpleInterest() {
                         Total return:
                       </Typography>
                     </TableCell>
-                    <TableCell>
-                      <Typography>{calc.result}</Typography>
+                    <TableCell align="right">
+                      <TextField
+                        hiddenLabel
+                        size="small"
+                        variant="filled"
+                        value={calc.result}
+                        id="filled-read-only-result"
+                        InputProps={{
+                          readOnly: true,
+                        }}
+                      />
                     </TableCell>
                   </TableRow>
                 </TableBody>
               </Table>
             </TableContainer>
+          </Grid>
+          <Grid item xs={12} sm={12} md={6} lg={4}>
+            <Box height={300}>
+              <ResponsivePie
+                data={pieData}
+                margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
+                innerRadius={0.5}
+                padAngle={0.7}
+                cornerRadius={3}
+                activeOuterRadiusOffset={8}
+                borderWidth={1}
+                borderColor={{
+                  from: "color",
+                  modifiers: [["darker", 0.2]],
+                }}
+                enableArcLinkLabels={false}
+                arcLabel="id"
+                arcLabelsTextColor={
+                  localStorage.getItem("mode") === "dark"
+                    ? "#ffffff"
+                    : "#333333"
+                }
+                theme={{
+                  tooltip: {
+                    container: {
+                      background:
+                        localStorage.getItem("mode") === "dark"
+                          ? "#333333"
+                          : "#ffffff",
+                      color:
+                        localStorage.getItem("mode") === "dark"
+                          ? "#ffffff"
+                          : "#333333",
+                    },
+                  },
+                }}
+              />
+            </Box>
           </Grid>
         </Grid>
         <GetTimeline getSteps={steps} />

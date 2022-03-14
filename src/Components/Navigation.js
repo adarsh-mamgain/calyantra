@@ -10,10 +10,9 @@ import {
   Link,
   Button,
 } from "@mui/material";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import IconButton from "@mui/material/IconButton";
-import Brightness4Icon from "@mui/icons-material/Brightness4";
-import Brightness7Icon from "@mui/icons-material/Brightness7";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 
 export default function Navigation(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -45,7 +44,7 @@ export default function Navigation(props) {
               onClick={handleClick}
             >
               Calculators
-              <KeyboardArrowDownIcon />
+              <FontAwesomeIcon icon={solid("arrow-down")} />
             </Button>
             <Menu
               id="basic-menu"
@@ -116,9 +115,10 @@ export default function Navigation(props) {
               aria-label="Toggle color theme"
             >
               {props.getTheme.palette.mode === "dark"
-                ? (localStorage.setItem("mode", "dark"), (<Brightness7Icon />))
+                ? (localStorage.setItem("mode", "dark"),
+                  (<FontAwesomeIcon icon={solid("sun")} />))
                 : (localStorage.setItem("mode", "light"),
-                  (<Brightness4Icon />))}
+                  (<FontAwesomeIcon icon={solid("moon")} />))}
             </IconButton>
           </Box>
         </Toolbar>

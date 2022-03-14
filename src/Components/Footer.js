@@ -1,9 +1,8 @@
 import React from "react";
 import { Box, Typography, Link, Grid, IconButton, Stack } from "@mui/material";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import { BrushRounded, CodeRounded } from "@mui/icons-material";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { solid, brands } from "@fortawesome/fontawesome-svg-core/import.macro";
+import { grey } from "@mui/material/colors";
 
 export default function Footer() {
   return (
@@ -107,11 +106,11 @@ export default function Footer() {
               spacing={1}
             >
               <Typography color={"text.secondary"}>Adarsh Mamgain</Typography>
-              <CodeRounded sx={{ color: "text.secondary" }} />
+              <FontAwesomeIcon icon={solid("code")} color={grey[400]} />
             </Stack>
             <Link href="https://twitter.com/Adarsh_Mamgain" target={"_blank"}>
               <IconButton aria-label="Twitter">
-                <TwitterIcon />
+                <FontAwesomeIcon icon={brands("twitter")} />
               </IconButton>
             </Link>
             <Link
@@ -119,12 +118,12 @@ export default function Footer() {
               target={"_blank"}
             >
               <IconButton aria-label="LinkedIn">
-                <LinkedInIcon />
+                <FontAwesomeIcon icon={brands("linkedin")} />
               </IconButton>
             </Link>
             <Link href="https://github.com/adarsh-mamgain" target={"_blank"}>
               <IconButton aria-label="GitHub">
-                <GitHubIcon />
+                <FontAwesomeIcon icon={brands("github")} />
               </IconButton>
             </Link>
             <Stack
@@ -136,11 +135,11 @@ export default function Footer() {
               <Typography color={"text.secondary"}>
                 Tanmay Chakrabarty
               </Typography>
-              <BrushRounded sx={{ color: "text.secondary" }} />
+              <FontAwesomeIcon icon={solid("palette")} color={grey[400]} />
             </Stack>
             <Link href="https://twitter.com/tanmaychk" target={"_blank"}>
               <IconButton aria-label="Twitter">
-                <TwitterIcon />
+                <FontAwesomeIcon icon={brands("twitter")} />
               </IconButton>
             </Link>
             <Link
@@ -148,12 +147,12 @@ export default function Footer() {
               target={"_blank"}
             >
               <IconButton aria-label="LinkedIn">
-                <LinkedInIcon />
+                <FontAwesomeIcon icon={brands("linkedin")} />
               </IconButton>
             </Link>
             <Link href="https://github.com/tanmaychk" target={"_blank"}>
               <IconButton aria-label="GitHub">
-                <GitHubIcon />
+                <FontAwesomeIcon icon={brands("github")} />
               </IconButton>
             </Link>
           </Grid>

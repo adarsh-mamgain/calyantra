@@ -9,11 +9,12 @@ import {
   Snackbar,
   Grid,
 } from "@mui/material";
-import SendIcon from "@mui/icons-material/Send";
 import { useLocation } from "react-router";
 import { getAuth, onAuthStateChanged, signInAnonymously } from "firebase/auth";
 import { ref, update } from "firebase/database";
 import database from "./Database";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 
 const subjectList = [
   {
@@ -83,7 +84,7 @@ export default function Feedback() {
   return (
     <Box paddingY={1} marginY={1}>
       <Grid
-        width={{ sx: "100%", sm: "75%"}}
+        width={{ sx: "100%", sm: "75%" }}
         container
         direction={"row"}
         justifyContent={"center"}
@@ -150,7 +151,7 @@ export default function Feedback() {
             />
             <Button
               color="secondary"
-              endIcon={<SendIcon />}
+              endIcon={<FontAwesomeIcon icon={solid("paper-plane")} />}
               variant="contained"
               type="submit"
               sx={{ width: "100%" }}
