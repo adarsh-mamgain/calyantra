@@ -12,17 +12,17 @@ export default function ListButton(props) {
     <ListItemButton
       sx={{
         maxWidth: "250px",
-        height: "115px",
+        height: props.height ? props.height : "115px",
         m: 1,
         bgcolor: "background.paper",
       }}
       component={Link}
       href={props.href}
     >
-      <ListItemIcon>{props.icon}</ListItemIcon>
+      {props.icon ? <ListItemIcon>{props.icon}</ListItemIcon> : null}
       <ListItemText
         primary={
-          <Typography component={"span"} color={"text.primary"} variant="body1">
+          <Typography component={"h2"} color={"text.primary"}>
             {props.primary}
           </Typography>
         }

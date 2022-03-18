@@ -10,7 +10,7 @@ import {
   Stack,
 } from "@mui/material";
 import { useLocation } from "react-router-dom";
-import { MD5, SHA1, SHA224, SHA256, SHA384, SHA512 } from "crypto-js";
+import { MD5, SHA1, SHA3, SHA224, SHA256, SHA384, SHA512 } from "crypto-js";
 import GetRating from "../Components/GetRating";
 import GetTimeline from "../Components/GetTimeline";
 import GetHelmet from "../Components/GetHelmet";
@@ -27,6 +27,8 @@ export default function Hashing() {
       setText(MD5(event.target.value));
     } else if (type.pathname == "/hash/sha1") {
       setText(SHA1(event.target.value));
+    } else if (type.pathname == "/hash/sha3") {
+      setText(SHA3(event.target.value));
     } else if (type.pathname == "/hash/sha224") {
       setText(SHA224(event.target.value));
     } else if (type.pathname == "/hash/sha256") {
@@ -125,7 +127,7 @@ export default function Hashing() {
       <Box sx={{ px: { xs: 2, sm: 10, md: 20 }, py: 2 }}>
         <GetHelmet
           title="Hashing | Calyantra.com"
-          description="Hash 🔐 your text or files 🗂 to MD5, SHA1, SHA224, SHA256, SHA384 and SHA512."
+          description="Hash 🔐 your text or files 🗂 to MD5, SHA1, SHA3, SHA224, SHA256, SHA384 and SHA512."
           url={useLocation().pathname}
         />
         <Box>

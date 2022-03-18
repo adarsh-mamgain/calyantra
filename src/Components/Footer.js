@@ -106,7 +106,7 @@ export default function Footer() {
               spacing={1}
             >
               <Typography color={"text.secondary"}>Adarsh Mamgain</Typography>
-              <FontAwesomeIcon icon={solid("code")} color={grey[400]} />
+              <FontAwesomeIcon icon={solid("code")} color={grey[500]} />
             </Stack>
             <Link href="https://twitter.com/Adarsh_Mamgain" target={"_blank"}>
               <IconButton aria-label="Twitter">
@@ -135,7 +135,7 @@ export default function Footer() {
               <Typography color={"text.secondary"}>
                 Tanmay Chakrabarty
               </Typography>
-              <FontAwesomeIcon icon={solid("palette")} color={grey[400]} />
+              <FontAwesomeIcon icon={solid("palette")} color={grey[500]} />
             </Stack>
             <Link href="https://twitter.com/tanmaychk" target={"_blank"}>
               <IconButton aria-label="Twitter">

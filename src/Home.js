@@ -1,14 +1,6 @@
 import React from "react";
 import Box from "@mui/material/Box";
-import {
-  Grid,
-  Link,
-  List,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Typography,
-} from "@mui/material";
+import { Grid, List, Typography } from "@mui/material";
 import pwa from "../public/pwa.svg";
 import security from "../public/security.svg";
 import in_no_time from "../public/in_no_time.svg";

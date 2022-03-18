@@ -28,11 +28,9 @@ export default function Navigation(props) {
       <AppBar sx={{ px: { xs: 2, sm: 10, md: 20 } }} position="static">
         <Toolbar sx={{ flexWrap: "wrap", padding: { xs: 0 } }}>
           <Link href="/" underline="none" sx={{ flexGrow: 1 }}>
-            <Badge color={"secondary"} badgeContent={"BETA"}>
-              <Typography color={"text.primary"} sx={{ fontSize: 20 }}>
-                Calyantra
-              </Typography>
-            </Badge>
+            <Typography color={"text.primary"} sx={{ fontSize: 20 }}>
+              Calyantra
+            </Typography>
           </Link>
           <Box sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}>
             <Button
@@ -44,7 +42,7 @@ export default function Navigation(props) {
               onClick={handleClick}
             >
               Calculators
-              <FontAwesomeIcon icon={solid("arrow-down")} />
+              <FontAwesomeIcon icon={solid("angle-down")} />
             </Button>
             <Menu
               id="basic-menu"

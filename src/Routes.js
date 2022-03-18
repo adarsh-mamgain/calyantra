@@ -37,11 +37,9 @@ export default function Router() {
           path: "conversion",
           children: [
             { path: "", element: <ConversionHome /> },
-            { path: "millimeter-to-centimeter", element: <Length /> },
-            { path: "centimeter-to-meter", element: <Length /> },
-            { path: "meter-to-kilometer", element: <Length /> },
-            { path: "miles-to-kilometer", element: <Length /> },
-            { path: "millilitre-to-litre", element: <Litre /> },
+            { path: "length", element: <Length /> },
+            { path: "litre", element: <Litre /> },
+            { path: "temperature", element: <Temperature /> },
           ],
         },
         {
@@ -50,6 +48,7 @@ export default function Router() {
             { path: "", element: <HashHome /> },
             { path: "md5", element: <Hashing /> },
             { path: "sha1", element: <Hashing /> },
+            { path: "sha3", element: <Hashing /> },
             { path: "sha224", element: <Hashing /> },
             { path: "sha256", element: <Hashing /> },
             { path: "sha384", element: <Hashing /> },
