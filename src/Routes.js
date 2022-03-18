@@ -10,6 +10,7 @@ import { Privacy, Terms } from "./Components/Static/Legal";
 import ConversionHome from "./Conversion/Conversion";
 import Length from "./Conversion/Length";
 import Litre from "./Conversion/Litre";
+import Temperature from "./Conversion/Temperature";
 import AppleEmoji from "./Emoji/AppleEmoji";
 import EmojiHome from "./Emoji/Emoji";
 import TextEmoji from "./Emoji/TextEmoji";
