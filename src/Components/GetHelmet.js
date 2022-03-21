@@ -15,7 +15,7 @@ export default function GetHelmet(props) {
       <meta property="og:description" content={props.description} />
       <meta
         property="og:image"
-        content="https://calyantra.com/static/illustration.svg"
+        content="https://calyantra.com/static/illustration.png"
       />
 
       {/* Twitter */}
@@ -28,7 +28,7 @@ export default function GetHelmet(props) {
       <meta property="twitter:description" content={props.description} />
       <meta
         property="twitter:image"
-        content="https://calyantra.com/static/illustration.svg"
+        content="https://calyantra.com/static/illustration.png"
       />
     </Helmet>
   );

@@ -1,10 +1,11 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import { Grid, List, Typography } from "@mui/material";
-import pwa from "../public/pwa.svg";
 import security from "../public/security.svg";
 import in_no_time from "../public/in_no_time.svg";
 import share_link from "../public/share_link.svg";
+import illustration from "../public/illustration.svg";
+import illustration1 from "../public/illustration.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import ListButton from "./Components/ListButton";
@@ -18,8 +19,9 @@ export default function Home() {
           direction={"row"}
           justifyContent={"center"}
           alignItems={"center"}
-          spacing={10}
-          padding={5}
+          padding={{ xs: 0, sm: 5 }}
+          paddingY={{ xs: 2, sm: 0 }}
+          spacing={{ xs: 4, sm: 0 }}
         >
           <Grid item xs={12} sm={6}>
             <Typography color={"text.primary"} variant="h1" fontWeight={500}>
@@ -30,7 +32,19 @@ export default function Home() {
             </Typography>
           </Grid>
           <Grid item xs={12} sm={6}>
-            <img src={pwa} width="100%" height="100%" alt="pwa image" />
+            <img
+              src={illustration}
+              width="100%"
+              height="100%"
+              alt="pwa image"
+            />
+            <img
+              src={illustration1}
+              width="100%"
+              height="100%"
+              alt="illustration image"
+              hidden
+            />
           </Grid>
         </Grid>
         <List
@@ -68,6 +82,12 @@ export default function Home() {
             secondary={"Get all Apple and text based emoticons"}
             href="/emoji"
             icon={<FontAwesomeIcon icon={solid("face-grin")} size={"lg"} />}
+          />
+          <ListButton
+            primary={"World Date & Time"}
+            secondary={"Current worldwide Date & Time"}
+            href="/date"
+            icon={<FontAwesomeIcon icon={solid("clock")} size={"lg"} />}
           />
           {/* <ListItemButton component={Link} href="/generate">
           <ListItemIcon>
