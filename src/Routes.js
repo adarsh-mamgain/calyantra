@@ -1,18 +1,21 @@
 import React from "react";
 import { useRoutes } from "react-router-dom";
 import CalculatorHome from "./Calculator/Calculator";
+import CompoundInterest from "./Calculator/CompoundInterest";
 import GPA from "./Calculator/GPA";
 import SimpleCalculator from "./Calculator/SimpleCalculator";
+import SimpleInterest from "./Calculator/SimpleInterest";
 import PageNotFound from "./Components/Static/404";
 import { Privacy, Terms } from "./Components/Static/Legal";
 import ConversionHome from "./Conversion/Conversion";
 import Length from "./Conversion/Length";
 import Litre from "./Conversion/Litre";
+import Temperature from "./Conversion/Temperature";
 import AppleEmoji from "./Emoji/AppleEmoji";
 import EmojiHome from "./Emoji/Emoji";
 import TextEmoji from "./Emoji/TextEmoji";
 import HashHome from "./Hash/Hash";
-import { FileSHA, TextSHA } from "./Hash/SHA";
+import Hashing from "./Hash/SHA";
 import Home from "./Home";
 
 export default function Router() {
@@ -26,7 +29,8 @@ export default function Router() {
           children: [
             { path: "", element: <CalculatorHome /> },
             { path: "gpa", element: <GPA /> },
-            { path: "simple-interest", element: <CalculatorHome /> },
+            { path: "simple-interest", element: <SimpleInterest /> },
+            { path: "compound-interest", element: <CompoundInterest /> },
             { path: "simple-calculator", element: <SimpleCalculator /> },
           ],
         },
@@ -34,29 +38,22 @@ export default function Router() {
           path: "conversion",
           children: [
             { path: "", element: <ConversionHome /> },
-            { path: "millimeter-to-centimeter", element: <Length /> },
-            { path: "centimeter-to-meter", element: <Length /> },
-            { path: "meter-to-kilometer", element: <Length /> },
-            { path: "miles-to-kilometer", element: <Length /> },
-            { path: "millilitre-to-litre", element: <Litre /> },
+            { path: "length", element: <Length /> },
+            { path: "litre", element: <Litre /> },
+            { path: "temperature", element: <Temperature /> },
           ],
         },
         {
           path: "hash",
           children: [
             { path: "", element: <HashHome /> },
-            { path: "text-md5", element: <TextSHA /> },
-            { path: "text-sha1", element: <TextSHA /> },
-            { path: "text-sha224", element: <TextSHA /> },
-            { path: "text-sha256", element: <TextSHA /> },
-            { path: "text-sha384", element: <TextSHA /> },
-            { path: "text-sha512", element: <TextSHA /> },
-            { path: "file-md5", element: <FileSHA /> },
-            { path: "file-sha1", element: <FileSHA /> },
-            { path: "file-sha224", element: <FileSHA /> },
-            { path: "file-sha256", element: <FileSHA /> },
-            { path: "file-sha384", element: <FileSHA /> },
-            { path: "file-sha512", element: <FileSHA /> },
+            { path: "md5", element: <Hashing /> },
+            { path: "sha1", element: <Hashing /> },
+            { path: "sha3", element: <Hashing /> },
+            { path: "sha224", element: <Hashing /> },
+            { path: "sha256", element: <Hashing /> },
+            { path: "sha384", element: <Hashing /> },
+            { path: "sha512", element: <Hashing /> },
           ],
         },
         {

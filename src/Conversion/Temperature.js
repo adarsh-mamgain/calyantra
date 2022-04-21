@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import Feedback from "../Components/Feedback";
 
-export default function Litre() {
+export default function Temperature() {
   var [result, setResult] = React.useState();
 
   const convert = (event) => {

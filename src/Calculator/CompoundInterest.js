@@ -17,13 +17,14 @@ import { useLocation } from "react-router-dom";
 import GetTimeline from "../Components/GetTimeline";
 import GetRating from "../Components/GetRating";
 
-export default function SimpleInterest() {
+export default function CompoundInterest() {
   var [calc, setCalc] = React.useState({
     principal: 100,
-    interest: 7,
-    time: 1,
-    roi: 7,
-    result: 107,
+    rate: 7,
+    time: 2,
+    roi: 14.49,
+    number: 1,
+    result: 114.49,
   });
 
   const pieData = [
@@ -31,13 +32,13 @@ export default function SimpleInterest() {
       id: "Principal",
       label: "Principal",
       value: calc.principal,
-      color: "hsl(167, 70%, 50%)",
+      color: "hsl(43, 100%, 50%)",
     },
     {
       id: "Interest",
       label: "Interest",
       value: calc.roi,
-      color: "hsl(119, 70%, 50%)",
+      color: "hsl(181, 89%, 40%)",
     },
   ];
 
@@ -46,11 +47,13 @@ export default function SimpleInterest() {
       ...calc,
       principal: Number(event.target.value),
       roi: Number(
-        (event.target.value * calc.interest * calc.time) / 100
+        event.target.value *
+          Math.pow(1 + calc.rate / calc.number / 100, calc.number * calc.time) -
+          event.target.value
       ).toFixed(2),
       result: Number(
-        Number(event.target.value) +
-          Number((event.target.value * calc.interest * calc.time) / 100)
+        event.target.value *
+          Math.pow(1 + calc.rate / calc.number / 100, calc.number * calc.time)
       ).toFixed(2),
     });
   };
@@ -58,13 +61,21 @@ export default function SimpleInterest() {
   const handleInterest = (event) => {
     setCalc({
       ...calc,
-      interest: Number(event.target.value),
+      rate: Number(event.target.value),
       roi: Number(
-        (calc.principal * event.target.value * calc.time) / 100
+        calc.principal *
+          Math.pow(
+            1 + event.target.value / calc.number / 100,
+            calc.number * calc.time
+          ) -
+          calc.principal
       ).toFixed(2),
       result: Number(
-        calc.principal +
-          Number((calc.principal * event.target.value * calc.time) / 100)
+        calc.principal *
+          Math.pow(
+            1 + event.target.value / calc.number / 100,
+            calc.number * calc.time
+          )
       ).toFixed(2),
     });
   };
@@ -74,28 +85,58 @@ export default function SimpleInterest() {
       ...calc,
       time: Number(event.target.value),
       roi: Number(
-        (calc.principal * calc.interest * event.target.value) / 100
+        calc.principal *
+          Math.pow(
+            1 + calc.rate / calc.number / 100,
+            calc.number * event.target.value
+          ) -
+          calc.principal
       ).toFixed(2),
       result: Number(
-        calc.principal +
-          Number((calc.principal * calc.interest * event.target.value) / 100)
+        calc.principal *
+          Math.pow(
+            1 + calc.rate / calc.number / 100,
+            calc.number * event.target.value
+          )
       ).toFixed(2),
     });
   };
 
-  const steps = ["Input the data", "Calculate Simple Interest"];
+  const handleNumber = (event) => {
+    setCalc({
+      ...calc,
+      number: Number(event.target.value),
+      roi: Number(
+        calc.principal *
+          Math.pow(
+            1 + calc.rate / event.target.value / 100,
+            event.target.value * calc.time
+          ) -
+          calc.principal
+      ).toFixed(2),
+      result: Number(
+        calc.principal *
+          Math.pow(
+            1 + calc.rate / event.target.value / 100,
+            event.target.value * calc.time
+          )
+      ).toFixed(2),
+    });
+  };
+
+  const steps = ["Input the data", "Calculate Compound Interest"];
 
   return (
     <Box bgcolor={"background.default"}>
       <Box sx={{ px: { xs: 2, sm: 10, md: 20 }, py: 2 }}>
         <GetHelmet
-          title="Simple Interest calculator | Calyantra.com"
+          title="Compound Interest calculator | Calyantra.com"
           description="Calculate your GPA, Simple Interest and Compound Interest."
           url={useLocation().pathname}
         />
         <Box>
           <Typography align="center" color={"text.primary"} variant="h1">
-            Simple Interest Calculator
+            Compound Interest Calculator
           </Typography>
           <Typography
             align="center"
@@ -103,7 +144,7 @@ export default function SimpleInterest() {
             variant="body1"
             sx={{ mb: 3 }}
           >
-            Calculate Simple Interest and share link with friends
+            Calculate Compound Interest and share link with friends
           </Typography>
         </Box>
         <Grid
@@ -115,7 +156,7 @@ export default function SimpleInterest() {
         >
           <Grid item xs={12} sm={12} md={6} lg={5}>
             <TableContainer bgcolor={"background.paper"}>
-              <Table aria-label="Simple Interest calculating table">
+              <Table aria-label="Compound Interest calculating table">
                 <TableBody>
                   <TableRow>
                     <TableCell>Principal Amount (P)</TableCell>
@@ -142,7 +183,7 @@ export default function SimpleInterest() {
                         key="1"
                         size="small"
                         variant="filled"
-                        value={calc.interest}
+                        value={calc.rate}
                         onChange={(e) => handleInterest(e)}
                         type="number"
                         id="filled-interest"
@@ -160,6 +201,22 @@ export default function SimpleInterest() {
                         variant="filled"
                         value={calc.time}
                         onChange={(e) => handleTime(e)}
+                        type="number"
+                        id="filled-time"
+                      />
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>Compounds / Year (n)</TableCell>
+                    <TableCell align="right">
+                      <TextField
+                        hiddenLabel
+                        required
+                        key="2"
+                        size="small"
+                        variant="filled"
+                        value={calc.number}
+                        onChange={(e) => handleNumber(e)}
                         type="number"
                         id="filled-time"
                       />

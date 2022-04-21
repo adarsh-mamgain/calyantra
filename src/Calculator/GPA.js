@@ -15,8 +15,10 @@ import {
   TableCell,
 } from "@mui/material";
 import Feedback from "../Components/Feedback";
-// import Donate from "../Components/Donate";
-import Crumbs from "../Components/Crumbs";
+import GetHelmet from "../Components/GetHelmet";
+import { useLocation } from "react-router-dom";
+import GetTimeline from "../Components/GetTimeline";
+import GetRating from "../Components/GetRating";
 
 const gradesList = [
   {
@@ -54,7 +56,7 @@ const gradesList = [
 ];
 
 export default function GPA() {
-  const n = 5,
+  const n = 10,
     m = 3;
   var count = 0;
   var [result, setResult] = React.useState(["Result"]);
@@ -87,114 +89,153 @@ export default function GPA() {
     setResult(gpa.toFixed(2));
   };
 
+  const steps = [
+    "Input the course data",
+    "Calculate the GPA",
+    "Copy and share the result",
+  ];
+
   return (
-    <Box sx={{ px: 20, m: 3 }}>
-      <Crumbs />
-      <Typography variant="h2">GPA Calculator</Typography>
-      <Grid container justifyContent="center" spacing={1}>
-        <Grid item xs={12} lg={9}>
-          <TableContainer
-            component={Paper}
-            elevation={3}
-            sx={{ width: "max-content" }}
+    <Box bgcolor={"background.default"}>
+      <Box sx={{ px: { xs: 2, sm: 10, md: 20 }, py: 2 }}>
+        <GetHelmet
+          title="GPA calculator | Calyantra.com"
+          description="Calculate your GPA, Simple Interest and Compound Interest."
+          url={useLocation().pathname}
+        />
+        <Box>
+          <Typography align="center" color={"text.primary"} variant="h1">
+            GPA Calculator
+          </Typography>
+          <Typography
+            align="center"
+            color={"text.secondary"}
+            variant="body1"
+            sx={{ mb: 3 }}
           >
-            <Table aria-label="GPA calculating table">
-              <TableHead>
-                <TableRow>
-                  <TableCell>Sr.</TableCell>
-                  <TableCell>Course</TableCell>
-                  <TableCell>Credits</TableCell>
-                  <TableCell>Grades</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {matrix.map((rows, rowIndex) => (
-                  <TableRow key={rowIndex}>
-                    <TableCell key={0} component="th" scope="row" align="right">
-                      {(count += 1)}
+            Calculate your GPA and share link with friends
+          </Typography>
+        </Box>
+        <Grid
+          container
+          direction={"row"}
+          justifyContent={"center"}
+          alignItems={"center"}
+          width={{ xs: "100%", sm: "max-content" }}
+          margin={"auto"}
+        >
+          <Grid item xs={12}>
+            <TableContainer
+              component={Paper}
+              elevation={3}
+            >
+              <Table aria-label="GPA calculating table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell
+                      align="right"
+                      sx={{ display: { xs: "none", sm: "table-cell" } }}
+                    >
+                      Sr.
                     </TableCell>
-                    <TableCell>
-                      <TextField
-                        hiddenLabel
-                        required
-                        sx={{ width: 200 }}
-                        size="small"
-                        variant="filled"
-                        // key={1}
-                        onChange={(e) => handleChange(rowIndex, 0, e)}
-                        id="filled-course-name"
-                      />
-                    </TableCell>
-                    <TableCell>
-                      <TextField
-                        hiddenLabel
-                        required
-                        sx={{ width: 100 }}
-                        size="small"
-                        variant="filled"
-                        // key={2}
-                        onChange={(e) => handleChange(rowIndex, 1, e)}
-                        type="number"
-                        id="filled-credit"
-                      />
-                    </TableCell>
-                    <TableCell>
-                      <TextField
-                        hiddenLabel
-                        required
-                        sx={{ width: 90 }}
-                        size="small"
-                        variant="filled"
-                        // key={3}
-                        // ! here change the grades for particular key
-                        onChange={(e) => handleChange(rowIndex, 2, e)}
-                        id="filled-select-grade"
-                        defaultValue={"null"}
-                        select
+                    <TableCell>Course</TableCell>
+                    <TableCell>Credits</TableCell>
+                    <TableCell>Grades</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {matrix.map((rows, rowIndex) => (
+                    <TableRow key={rowIndex}>
+                      <TableCell
+                        key={0}
+                        component="th"
+                        scope="row"
+                        align="right"
+                        sx={{ display: { xs: "none", sm: "table-cell" } }}
                       >
-                        {gradesList.map((option) => (
-                          <MenuItem key={option.label} value={option.value}>
-                            {option.label}
-                          </MenuItem>
-                        ))}
-                      </TextField>
+                        {(count += 1)}
+                      </TableCell>
+                      <TableCell>
+                        <TextField
+                          hiddenLabel
+                          required
+                          sx={{ width: { xs: 100, sm: 200 } }}
+                          size="small"
+                          variant="filled"
+                          // key={1}
+                          onChange={(e) => handleChange(rowIndex, 0, e)}
+                          id="filled-course-name"
+                        />
+                      </TableCell>
+                      <TableCell>
+                        <TextField
+                          hiddenLabel
+                          required
+                          sx={{ width: 100 }}
+                          size="small"
+                          variant="filled"
+                          // key={2}
+                          onChange={(e) => handleChange(rowIndex, 1, e)}
+                          type="number"
+                          id="filled-credit"
+                          inputProps={{ min: 0 }}
+                        />
+                      </TableCell>
+                      <TableCell>
+                        <TextField
+                          hiddenLabel
+                          required
+                          sx={{ width: 100 }}
+                          size="small"
+                          variant="filled"
+                          // key={3}
+                          // ! here change the grades for particular key
+                          onChange={(e) => handleChange(rowIndex, 2, e)}
+                          id="filled-select-grade"
+                          defaultValue={"null"}
+                          select
+                        >
+                          {gradesList.map((option) => (
+                            <MenuItem key={option.label} value={option.value}>
+                              {option.label}
+                            </MenuItem>
+                          ))}
+                        </TextField>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                  <TableRow>
+                    <TableCell colSpan={2} align="right">
+                      <Button
+                        variant="contained"
+                        onClick={gpaCalculate}
+                      >
+                        Calculate
+                      </Button>
+                    </TableCell>
+                    <TableCell colSpan={2}>
+                      <TextField
+                        hiddenLabel
+                        sx={{ width: { xs: 100, sm: "100%" } }}
+                        size="small"
+                        variant="filled"
+                        value={result}
+                        id="filled-read-only-result"
+                        InputProps={{
+                          readOnly: true,
+                        }}
+                      />
                     </TableCell>
                   </TableRow>
-                ))}
-                <TableRow>
-                  <TableCell colSpan={2} align="right">
-                    <Button
-                      variant="contained"
-                      align="right"
-                      onClick={gpaCalculate}
-                    >
-                      Calculate
-                    </Button>
-                  </TableCell>
-                  <TableCell colSpan={2} align="right">
-                    <TextField
-                      hiddenLabel
-                      sx={{ width: "100%" }}
-                      size="small"
-                      variant="filled"
-                      value={result}
-                      id="filled-read-only-result"
-                      InputProps={{
-                        readOnly: true,
-                      }}
-                    />
-                  </TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </TableContainer>
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </Grid>
         </Grid>
-        <Grid item xs={12} lg={3}>
-          <Feedback />
-          {/* <Donate /> */}
-          <Typography variant="h1">ADS</Typography>
-        </Grid>
-      </Grid>
+        <GetTimeline getSteps={steps} />
+        <GetRating />
+        <Feedback />
+      </Box>
     </Box>
   );
 }

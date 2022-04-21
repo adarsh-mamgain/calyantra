@@ -1,68 +1,124 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Box, Typography } from "@mui/material";
-import { Helmet } from "react-helmet";
+import { useLocation } from "react-router-dom";
+import {
+  Alert,
+  Box,
+  Card,
+  CardActionArea,
+  CardActions,
+  CardContent,
+  Grid,
+  IconButton,
+  Link,
+  Typography,
+} from "@mui/material";
+import GetHelmet from "../Components/GetHelmet";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 
 export default function HashHome() {
+  let path = useLocation().pathname;
+
+  let cardList = [
+    {
+      title: "MD5",
+      url: path + "/md5",
+      description:
+        "The MD5 message-digest algorithm is a cryptographically broken but still widely used hash function producing a 128-bit hash value.",
+    },
+    {
+      title: "SHA-1",
+      url: path + "/sha1",
+      description:
+        "The SHA-1 message-digest algorithm is a cryptographically broken but still widely used hash function producing a 160-bit hash value.",
+    },
+    {
+      title: "SHA-3",
+      url: path + "/sha3",
+      description:
+        "SHA-3 is the latest member of the Secure Hash Algorithm 3 family of standards. SHA-3 is a subset of the broader cryptographic primitive family Keccak.",
+    },
+    {
+      title: "SHA-224",
+      url: path + "/sha224",
+      description:
+        "The SHA-224 message-digest algorithm is a cryptographically broken but still widely used hash function producing a 224-bit hash value.",
+    },
+    {
+      title: "SHA-256",
+      url: path + "/sha256",
+      description:
+        "The SHA-256 belongs to SHA-2 (Secure Hash Algorithm 2) family. SHA-256 is a patented cryptographic hash function that produces a 256-bit hash value.",
+    },
+    {
+      title: "SHA-384",
+      url: path + "/sha384",
+      description:
+        "The SHA-384 belongs to SHA-2 (Secure Hash Algorithm 2) family. SHA-384 is a truncated version of SHA-512 that produces a 384-bit hash value.",
+    },
+    {
+      title: "SHA-512",
+      url: path + "/sha512",
+      description:
+        "The SHA-512 belongs to SHA-2 (Secure Hash Algorithm 2) family. SHA-512 is a patented cryptographic hash function that produces a 512-bit hash value.",
+    },
+  ];
+
   return (
-    <Box sx={{ px: 20, m: 3 }}>
-      <Helmet>
-        <title>Online Hashing | Mangya.tech</title>
-        <meta name="title" content="Online Hashing | Mangya.tech" />
-        <meta name="description" content="Hash 🔐 your text or files 🗂 to MD5, SHA1, SHA224, SHA256, SHA384 and SHA512." />
-
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://mangya.tech/hash" />
-        <meta property="og:title" content="Online Hashing | Mangya.tech" />
-        <meta property="og:description" content="Hash 🔐 your text or files 🗂 to MD5, SHA1, SHA224, SHA256, SHA384 and SHA512." />
-        <meta property="og:image" content="https://mangya.tech/illustration.svg" />
-
-        {/* Twitter */}
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://mangya.tech/hash" />
-        <meta property="twitter:title" content="Online Hashing | Mangya.tech" />
-        <meta property="twitter:description" content="Hash 🔐 your text or files 🗂 to MD5, SHA1, SHA224, SHA256, SHA384 and SHA512." />
-        <meta property="twitter:image" content="https://mangya.tech/illustration.svg" />
-      </Helmet>
-      <h1>Text</h1>
-      <Link underline="none" to="text-md5">
-        <Typography>MD5</Typography>
-      </Link>
-      <Link underline="none" to="text-sha1">
-        <Typography>SHA1</Typography>
-      </Link>
-      <Link underline="none" to="text-sha224">
-        <Typography>SHA224</Typography>
-      </Link>
-      <Link underline="none" to="text-sha256">
-        <Typography>SHA256</Typography>
-      </Link>
-      <Link underline="none" to="text-sha384">
-        <Typography>SHA384</Typography>
-      </Link>
-      <Link underline="none" to="text-sha512">
-        <Typography>SHA512</Typography>
-      </Link>
-      <h1>File</h1>
-      <Link underline="none" to="file-md5">
-        <Typography>MD5</Typography>
-      </Link>
-      <Link underline="none" to="file-sha1">
-        <Typography>SHA1</Typography>
-      </Link>
-      <Link underline="none" to="file-sha224">
-        <Typography>SHA224</Typography>
-      </Link>
-      <Link underline="none" to="file-sha256">
-        <Typography>SHA256</Typography>
-      </Link>
-      <Link underline="none" to="file-sha384">
-        <Typography>SHA384</Typography>
-      </Link>
-      <Link underline="none" to="file-sha512">
-        <Typography>SHA512</Typography>
-      </Link>
+    <Box bgcolor={"background.default"}>
+      <Box sx={{ px: { xs: 2, sm: 10, md: 20 }, py: 2 }}>
+        <GetHelmet
+          title="Online Hashing | Calyantra.com"
+          description="Hash 🔐 your text or files 🗂 to MD5, SHA1, SHA3, SHA224, SHA256, SHA384 and SHA512."
+          url={useLocation().pathname}
+        />
+        <Typography align="center" color={"text.primary"} variant="h1">
+          Hash text or files
+        </Typography>
+        <Grid
+          container
+          direction={"row"}
+          justifyContent={"center"}
+          alignItems={"center"}
+          padding={2}
+        >
+          {cardList.map((card) => (
+            <Card
+              sx={{ maxWidth: "250px", margin: 2 }}
+              elevation={2}
+              key={card.title}
+            >
+              <CardActionArea href={card.url}>
+                <CardContent>
+                  <Typography gutterBottom variant="h2">
+                    {card.title}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {card.description}
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <IconButton color="primary">
+                    <FontAwesomeIcon icon={solid("arrow-right")} />
+                  </IconButton>
+                </CardActions>
+              </CardActionArea>
+            </Card>
+          ))}
+        </Grid>
+        <Alert
+          severity="info"
+          sx={{ width: "fit-content", margin: "16px auto" }}
+        >
+          <strong>Discolsure:</strong> This website uses material from{" "}
+          <Link href="https://www.wikipedia.org/">Wikipedia</Link>, which is
+          released under the{" "}
+          <Link href="https://creativecommons.org/licenses/by-sa/3.0/">
+            Creative Commons Attribution-Share-Alike License 3.0
+          </Link>
+          .
+        </Alert>
+      </Box>
     </Box>
   );
 }

@@ -1,8 +1,10 @@
 import React from "react";
-import { Box, Grid, Button, Tooltip } from "@mui/material";
+import { Box, Grid, Button, Tooltip, Typography } from "@mui/material";
 import Feedback from "../Components/Feedback";
-// import Donate from "../Components/Donate";
-import Crumbs from "../Components/Crumbs";
+import GetHelmet from "../Components/GetHelmet";
+import { useLocation } from "react-router-dom";
+import GetTimeline from "../Components/GetTimeline";
+import GetRating from "../Components/GetRating";
 
 const emoticons = [
   { emoji: ":)", name: "happy" },
@@ -49,38 +51,66 @@ export default function TextEmoji() {
     copy[index] = true;
     setOpen(copy);
     setTimeout(() => {
-      let original = [...opened]
+      let original = [...opened];
       original[index] = false;
       setOpen(original);
     }, 1000);
   };
 
+  const steps = ["Search your emoji", "Copy it to the clipboard"];
+
   return (
-    <Box sx={{ px: 20, m: 3 }}>
-      <Crumbs />
-      <Grid container justifyContent="center">
-        {emoticons.map(
-          (options, index) => (
-            opened.push(false),
-            (
-              <div>
-                <Tooltip
-                  open={opened[index]}
-                  disableFocusListener
-                  disableHoverListener
-                  disableTouchListener
-                  placement="top"
-                  title="Copied!"
-                >
-                  <Button key={index} sx={{ width: 120, height: 120, fontSize: 20 }} onClick={(e) => copyEmote(e, index)}>
-                    {options.emoji}
-                  </Button>
-                </Tooltip>
-              </div>
+    <Box bgcolor={"background.default"}>
+      <Box sx={{ px: { xs: 2, sm: 10, md: 20 }, py: 2 }}>
+        <GetHelmet
+          title="Text Emojis :) *_* ;-; | Calyantra.com"
+          description="Get all Apple and text based emoticons at one place."
+          url={useLocation().pathname}
+        />
+        <Box>
+          <Typography align="center" color={"text.primary"} variant="h1">
+            Apple Emoji
+          </Typography>
+          <Typography
+            align="center"
+            color={"text.secondary"}
+            variant="body1"
+            sx={{ mb: 3 }}
+          >
+            All Apple emoticons at one place
+          </Typography>
+        </Box>
+        <Grid container justifyContent="center"  alignItems={"center"}>
+          {emoticons.map(
+            (options, index) => (
+              opened.push(false),
+              (
+                <Box>
+                  <Tooltip
+                    open={opened[index]}
+                    disableFocusListener
+                    disableHoverListener
+                    disableTouchListener
+                    placement="top"
+                    title="Copied!"
+                  >
+                    <Button
+                      key={index}
+                      sx={{ width: 120, height: 120, fontSize: { xs: 15, sm: 20 } }}
+                      onClick={(e) => copyEmote(e, index)}
+                    >
+                      {options.emoji}
+                    </Button>
+                  </Tooltip>
+                </Box>
+              )
             )
-          )
-        )}
-      </Grid>
+          )}
+        </Grid>
+        <GetTimeline getSteps={steps} />
+        <GetRating />
+        <Feedback />
+      </Box>
     </Box>
   );
 }
